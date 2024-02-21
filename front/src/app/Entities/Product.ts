@@ -11,4 +11,6 @@ export interface Product {
   category: Category;
   seller: Seller;
   reviews: Review[];
+  createdAt: Date;
+  updatedAt: Date;
 }

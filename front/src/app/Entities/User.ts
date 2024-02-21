@@ -5,4 +5,6 @@ export interface User {
   address: string;
   type: 'Admin' | 'User' | 'Seller';
   state: 'Active' | 'Archived';
+  createdAt: Date;
+  updatedAt: Date;
 }

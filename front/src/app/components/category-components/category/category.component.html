@@ -1,1 +1,32 @@
-<p>category works!</p>
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>State</th>
+      <th>Created at</th>
+      <th>Updated at</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let category of categories; let i = index">
+      <tr>
+        <td>
+          <div>{{ category.category }}</div>
+        </td>
+        <td>
+          <div>{{ category.state }}</div>
+        </td>
+        <td>
+          <div>
+            {{ category.createdAt | date : "dd/MM/yyyy HH:mm:ss" }}
+          </div>
+        </td>
+        <td>
+          <div>
+            {{ category.updatedAt | date : "dd/MM/yyyy HH:mm:ss" }}
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>

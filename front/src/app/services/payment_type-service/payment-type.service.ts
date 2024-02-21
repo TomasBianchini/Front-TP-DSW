@@ -1,11 +1,10 @@
-import { HttpClient } from '@angular/common/http/index.js';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PaymentTypeService {
-
   url = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
@@ -23,11 +22,13 @@ export class PaymentTypeService {
   }
 
   update(payment_type: any) {
-    return this.http.put(`${this.url}/payment_type/${payment_type.id}`, payment_type);
+    return this.http.put(
+      `${this.url}/payment_type/${payment_type.id}`,
+      payment_type
+    );
   }
 
   remove(id: number) {
     return this.http.delete(`${this.url}/payment_type/${id}`);
   }
-}
 }

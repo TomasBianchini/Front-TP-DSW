@@ -1,7 +1,7 @@
-export interface PaymentType {
+export interface Payment_type {
   payment_type: string;
   state: 'Active' | 'Archived';
-  created_at: Date;
-  updated_at: Date;
+  createdAt: Date;
+  updatedAt: Date;
   _id: string;
 }
