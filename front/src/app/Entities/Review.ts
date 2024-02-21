@@ -4,4 +4,6 @@ export interface Review {
   comment: string;
   state: 'Active' | 'Archived';
   product: Product;
+  createdAt: Date;
+  updatedAt: Date;
 }

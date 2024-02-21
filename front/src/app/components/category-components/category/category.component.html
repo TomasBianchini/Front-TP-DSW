@@ -1,15 +1,15 @@
 <table>
   <thead>
     <tr>
-      <th>Category</th>
-      <th>State</th>
-      <th>Created at</th>
-      <th>Updated at</th>
+      <th scope="col">Category</th>
+      <th scope="col">State</th>
+      <th scope="col">Created at</th>
+      <th scope="col">Updated at</th>
     </tr>
   </thead>
   <tbody>
     <ng-container *ngFor="let category of categories; let i = index">
-      <tr>
+      <tr scope="row">
         <td>
           <div>{{ category.category }}</div>
         </td>

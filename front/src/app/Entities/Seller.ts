@@ -5,4 +5,6 @@ export interface Seller extends User {
   cuil: string;
   cbu: string;
   products: Product[];
+  createdAt: Date;
+  updatedAt: Date;
 }
