@@ -1,10 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-html,
-body {
-  height: 100%;
+.success-notification {
+  background-color: #4caf50;
+  /* Green background color */
+  color: white;
+  /* White text color */
 }
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+.error-notification {
+  background-color: red;
+  color: white;
 }
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";

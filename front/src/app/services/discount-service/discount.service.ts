@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Discount } from '../../Entities/Discount.js';
 @Injectable({
@@ -10,10 +10,11 @@ export class DiscountService {
   constructor(private http: HttpClient) {}
 
   findAll() {
-    return this.http.get(`${this.url}/discount`);
+    const params = new HttpParams().set('state', 'Active');
+    return this.http.get(`${this.url}/discount`, { params });
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.http.get(`${this.url}/discount/${id}`);
   }
 
@@ -21,11 +22,11 @@ export class DiscountService {
     return this.http.post(`${this.url}/discount`, discount);
   }
 
-  update(discount: Discount) {
-    return this.http.put(`${this.url}/discount/${discount._id}`, discount);
+  update(id: string, discount: Discount) {
+    return this.http.put(`${this.url}/discount/${id}`, discount);
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.http.delete(`${this.url}/discount/${id}`);
   }
 }

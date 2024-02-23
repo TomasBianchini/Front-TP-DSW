@@ -14,7 +14,7 @@ export class CategoryService {
     return this.http.get(`${this.url}/category`);
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.http.get(`${this.url}/category/${id}`);
   }
 
@@ -22,11 +22,11 @@ export class CategoryService {
     return this.http.post(`${this.url}/category`, category);
   }
 
-  update(category: Category) {
-    return this.http.put(`${this.url}/category/${category._id}`, category);
+  update(id: string, category: Category) {
+    return this.http.put(`${this.url}/category/${id}`, category);
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.http.delete(`${this.url}/category/${id}`);
   }
 }

@@ -1,5 +1,5 @@
 export interface Discount {
-  _id: string;
+  id: string;
   value: number;
   state: 'Active' | 'Archived';
   createdAt: Date;

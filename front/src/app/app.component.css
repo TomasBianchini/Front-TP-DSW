@@ -1,0 +1,15 @@
+.wrapper {
+  position: relative;
+}
+
+.content {
+  margin-top: 64px;
+  transition: margin-top 0.3s ease;
+}
+
+.content.sticky {
+  margin-top: 0;
+}
+.app-nav-bar a {
+  color: white; /* Color blanco para los enlaces dentro de la barra de navegación */
+}

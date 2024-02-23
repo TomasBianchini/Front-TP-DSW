@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Discount } from 'src/app/Entities/Discount.js';
 import { DiscountService } from 'src/app/services/discount-service/discount.service';
-import { NotificationService } from 'src/app/services/notication-service/notification.service.js';
+import { NotificationService } from 'src/app/services/notication-service/notification.service';
 
 @Component({
   selector: 'app-discount',
@@ -14,11 +14,19 @@ export class DiscountComponent implements OnInit {
     private notificationService: NotificationService
   ) {}
   discounts: Discount[] = [];
-  displayedColumns: string[] = ['value', 'category', 'state'];
+  displayedColumns: string[] = ['value', 'category', 'state', 'edit', 'delete'];
   ngOnInit() {
     this.discountService.findAll().subscribe({
       error: (res: any) => this.notificationService.showError(res.message),
       next: (res: any) => (this.discounts = res.data),
+    });
+  }
+
+  onDelete(id: string) {
+    this.discountService.remove(id).subscribe({
+      next: (res: any) => this.notificationService.showSuccess(res.message),
+      error: (res: any) => this.notificationService.showError(res.message),
+      complete: () => window.location.reload(),
     });
   }
 }
