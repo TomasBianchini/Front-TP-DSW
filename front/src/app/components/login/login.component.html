@@ -1,0 +1,67 @@
+<section class="flex flex-col md:flex-row h-screen items-center">
+  <div
+    class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 w-full"
+  >
+    <div
+      class="w-full max-w-2xl bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
+    >
+      <div class="p-8 space-y-4 md:space-y-6">
+        <h1
+          class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white"
+        >
+          Sign in to your account
+        </h1>
+        <form
+          class="space-y-4 md:space-y-6"
+          action="#"
+          [formGroup]="loginForm"
+          (ngSubmit)="onSubmit()"
+        >
+          <div style="display: block">
+            <label
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Email</label
+            >
+            <input
+              type="email"
+              formControlName="email"
+              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="name@company.com"
+              required
+            />
+          </div>
+          <div>
+            <label
+              for="password"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Password</label
+            >
+            <input
+              type="password"
+              formControlName="password"
+              placeholder="••••••••"
+              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-indigo-500 text-white font-mono font-normal items-center h-10 px-4 rounded-full hover:bg-indigo-600 active:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300 mt-4"
+          >
+            Sign in
+          </button>
+
+          <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+            Don’t have an account yet?
+            <a
+              routerLink="/signup"
+              class="font-medium text-primary-600 hover:underline dark:text-primary-500"
+              >Sign up</a
+            >
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

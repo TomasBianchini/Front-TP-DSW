@@ -31,6 +31,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
+
+import { LoginComponent } from './components/login/login.component';
+import { SingUpComponent } from './components/sing-up/sing-up.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +47,8 @@ import { MatCardModule } from '@angular/material/card';
     CreatePaymentTypeComponent,
     EditPaymentTypeComponent,
     NavBarComponent,
+    LoginComponent,
+    SingUpComponent,
   ],
   imports: [
     MatCardModule,

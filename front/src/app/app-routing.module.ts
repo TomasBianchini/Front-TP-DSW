@@ -9,6 +9,8 @@ import { CreateDiscountComponent } from './components/discount-components/create
 import { EditDiscountComponent } from './components/discount-components/edit-discount/edit-discount.component';
 import { CreatePaymentTypeComponent } from './components/payment_type-components/create-payment-type/create-payment-type.component';
 import { EditPaymentTypeComponent } from './components/payment_type-components/edit-payment-type/edit-payment-type.component';
+import { LoginComponent } from './components/login/login.component';
+import { SingUpComponent } from './components/sing-up/sing-up.component';
 const routes: Routes = [
   {
     path: 'category',
@@ -33,6 +35,14 @@ const routes: Routes = [
       { path: 'create', component: CreatePaymentTypeComponent },
       { path: 'edit/:id', component: EditPaymentTypeComponent },
     ],
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'signup',
+    component: SingUpComponent,
   },
 ];
 
