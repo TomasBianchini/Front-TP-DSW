@@ -25,9 +25,9 @@ export class SingUpComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(8)]],
       address: ['', [Validators.required, Validators.maxLength(150)]],
       type: ['', [Validators.required, Validators.pattern(/^(User|Seller)$/)]],
-      shop_name: [''],
-      cuil: [''],
-      cbu: [''],
+      // shop_name: [''],
+      // cuil: [''],
+      // cbu: [''],
     });
   }
   onSubmit() {
