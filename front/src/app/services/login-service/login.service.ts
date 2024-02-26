@@ -12,4 +12,15 @@ export class LoginService {
   login(user: any) {
     return this.httpClient.post(`${this.url}/login`, user);
   }
+  loggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
+  logOut() {
+    localStorage.removeItem('token');
+  }
+
+  getToken() {
+    return localStorage.getItem('token');
+  }
 }

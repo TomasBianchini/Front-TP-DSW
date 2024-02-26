@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 // Components
@@ -15,7 +15,9 @@ import { CreateDiscountComponent } from './components/discount-components/create
 import { CreatePaymentTypeComponent } from './components/payment_type-components/create-payment-type/create-payment-type.component';
 import { EditPaymentTypeComponent } from './components/payment_type-components/edit-payment-type/edit-payment-type.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-
+import { LoginComponent } from './components/login/login.component';
+import { SingUpComponent } from './components/sing-up/sing-up.component';
+import { EditProductComponent } from './components/product-components/edit-product/edit-product.component';
 // Material
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
@@ -32,8 +34,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 
-import { LoginComponent } from './components/login/login.component';
-import { SingUpComponent } from './components/sing-up/sing-up.component';
+//guards
+import { AuthGuard } from './guards/auth-guard/auth.guard';
+import { TokenInterceptorService } from './services/token-interceptor-service/token-interceptor.service';
+import { CreateProductComponent } from './components/product-components/create-product/create-product.component';
+import { ListProductComponent } from './components/product-components/list-product/list-product.component';
+import { SellerProductsComponent } from './components/product-components/seller-products/seller-products.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +55,10 @@ import { SingUpComponent } from './components/sing-up/sing-up.component';
     NavBarComponent,
     LoginComponent,
     SingUpComponent,
+    EditProductComponent,
+    CreateProductComponent,
+    ListProductComponent,
+    SellerProductsComponent,
   ],
   imports: [
     MatCardModule,
@@ -70,7 +80,14 @@ import { SingUpComponent } from './components/sing-up/sing-up.component';
     MatListModule,
     MatToolbarModule,
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

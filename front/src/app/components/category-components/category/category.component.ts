@@ -20,7 +20,6 @@ export class CategoryComponent implements OnInit {
     this.categoryService.findAll().subscribe({
       next: (res: any) => {
         this.categories = res.data;
-        console.log(res.data);
       },
       error: (res: any) => this.notificationService.showError(res.message),
     });

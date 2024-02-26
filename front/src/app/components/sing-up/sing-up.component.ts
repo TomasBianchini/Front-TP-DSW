@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/services/notication-service/notification.service';
+import { SellerService } from 'src/app/services/seller-service/seller.service';
 import { UserService } from 'src/app/services/user-service/user.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class SingUpComponent implements OnInit {
     private notificationService: NotificationService,
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private sellerService: SellerService
   ) {}
 
   ngOnInit(): void {
@@ -25,20 +27,30 @@ export class SingUpComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(8)]],
       address: ['', [Validators.required, Validators.maxLength(150)]],
       type: ['', [Validators.required, Validators.pattern(/^(User|Seller)$/)]],
-      // shop_name: [''],
-      // cuil: [''],
-      // cbu: [''],
+      shop_name: [''],
+      cuil: [''],
+      cbu: [''],
     });
   }
   onSubmit() {
     if (this.userForm.valid) {
-      this.userService.add(this.userForm.value).subscribe({
-        error: (res: any) => this.notificationService.showError(res.message),
-        complete: () => {
-          this.notificationService.showSuccess('User added successfully');
-          this.router.navigate(['/login']);
-        },
-      });
+      if (this.userForm.value.type === 'User') {
+        this.userService.add(this.userForm.value).subscribe({
+          error: (res: any) => this.notificationService.showError(res.message),
+          complete: () => {
+            this.notificationService.showSuccess('User added successfully');
+            this.router.navigate(['/login']);
+          },
+        });
+      } else {
+        this.sellerService.add(this.userForm.value).subscribe({
+          error: (res: any) => this.notificationService.showError(res.message),
+          complete: () => {
+            this.notificationService.showSuccess('User added successfully');
+            this.router.navigate(['/login']);
+          },
+        });
+      }
     } else {
       this.notificationService.showError('Invalid form data');
     }

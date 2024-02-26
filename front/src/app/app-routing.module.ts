@@ -11,9 +11,21 @@ import { CreatePaymentTypeComponent } from './components/payment_type-components
 import { EditPaymentTypeComponent } from './components/payment_type-components/edit-payment-type/edit-payment-type.component';
 import { LoginComponent } from './components/login/login.component';
 import { SingUpComponent } from './components/sing-up/sing-up.component';
+
+import { AuthGuard } from './guards/auth-guard/auth.guard';
+import { ListProductComponent } from './components/product-components/list-product/list-product.component';
+import { CreateProductComponent } from './components/product-components/create-product/create-product.component';
+import { EditProductComponent } from './components/product-components/edit-product/edit-product.component';
+import { SellerProductsComponent } from './components/product-components/seller-products/seller-products.component';
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full',
+  },
+  {
     path: 'category',
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: CategoryComponent },
       { path: 'create', component: CreateCategoryComponent },
@@ -22,6 +34,7 @@ const routes: Routes = [
   },
   {
     path: 'discount',
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: DiscountComponent },
       { path: 'create', component: CreateDiscountComponent },
@@ -30,10 +43,21 @@ const routes: Routes = [
   },
   {
     path: 'payment_type',
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: PaymentTypeComponent },
       { path: 'create', component: CreatePaymentTypeComponent },
       { path: 'edit/:id', component: EditPaymentTypeComponent },
+    ],
+  },
+  {
+    path: 'product',
+    canActivate: [AuthGuard],
+    children: [
+      { path: '', component: ListProductComponent },
+      { path: 'create', component: CreateProductComponent },
+      { path: 'edit/:id', component: EditProductComponent },
+      { path: 'sellerProducts', component: SellerProductsComponent },
     ],
   },
   {
@@ -43,6 +67,10 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SingUpComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '/login',
   },
 ];
 
