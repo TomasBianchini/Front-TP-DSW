@@ -1,0 +1,115 @@
+<section class="text-gray-700 body-font overflow-hidden bg-white">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="lg:w-4/5 mx-auto flex flex-wrap">
+      <img
+        alt="ecommerce"
+        class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200"
+        [src]="product.img_url"
+      />
+      <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+        <h2 class="text-sm title-font text-gray-500 tracking-widest">
+          {{ product.category.category }}
+        </h2>
+        <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
+          {{ product.name }}
+        </h1>
+        <div class="flex mb-4 items-center">
+          <ng-container *ngIf="product.stock > 0; else withoutStock">
+            <p class="text-green-500 text-lg font-medium">In stock</p>
+            <p class="text-gray-400 text-sm font-medium">
+              ({{ product.stock }} units)
+            </p>
+          </ng-container>
+          <ng-template #withoutStock>
+            <p class="text-red-500 text-lg font-medium">Without stock</p>
+          </ng-template>
+        </div>
+        <div class="flex mb-4">
+          <span>{{ product.rating }}</span>
+          <ng-container *ngFor="let _ of [1, 2, 3, 4, 5]; let i = index">
+            <ng-container *ngIf="i < product.rating">
+              <svg
+                class="w-4 h-4 text-yellow-300 ms-1"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 22 20"
+              >
+                <path
+                  d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+                />
+              </svg>
+            </ng-container>
+            <ng-container
+              *ngIf="i >= product.rating || product.rating === undefined"
+            >
+              <svg
+                class="w-4 h-4 ms-1 text-gray-300 dark:text-gray-500"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 22 20"
+              >
+                <path
+                  d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"
+                />
+              </svg>
+            </ng-container>
+          </ng-container>
+          <span class="text-gray-600 ml-3">
+            {{ product.reviews.length }} Reviews</span
+          >
+        </div>
+        <p class="leading-relaxed">
+          {{ product.description }}
+        </p>
+
+        <div class="flex">
+          <ng-container *ngIf="product.category.discounts.length; else price">
+            <div class="flex items-center">
+              <p class="text-lg font-semibold text-black cursor-auto my-3">
+                ${{ product.priceWithDiscount }}
+              </p>
+              <del>
+                <p class="text-sm text-gray-600 cursor-auto ml-2">
+                  ${{ product.price }}
+                </p>
+              </del>
+
+              <div class="ml-auto">
+                <svg
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  class="bi bi-bag-plus"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z"
+                  />
+                  <path
+                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </ng-container>
+          <ng-template #price>
+            <div class="flex items-center">
+              <p class="text-lg font-semibold text-black cursor-auto my-3">
+                ${{ product.price }}
+              </p>
+            </div>
+          </ng-template>
+          <button
+            class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
+          >
+            Add to cart
+          </button>
+        </div>
+      </div>
+      <app-review-list [reviews]="product.reviews"> </app-review-list>
+    </div>
+  </div>
+</section>

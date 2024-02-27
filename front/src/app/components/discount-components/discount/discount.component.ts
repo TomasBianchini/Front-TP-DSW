@@ -17,7 +17,8 @@ export class DiscountComponent implements OnInit {
   displayedColumns: string[] = ['value', 'category', 'state', 'edit', 'delete'];
   ngOnInit() {
     this.discountService.findAll().subscribe({
-      error: (res: any) => this.notificationService.showError(res.message),
+      error: (res: any) =>
+        this.notificationService.showError(res.error.message),
       next: (res: any) => (this.discounts = res.data),
     });
   }
@@ -25,7 +26,8 @@ export class DiscountComponent implements OnInit {
   onDelete(id: string) {
     this.discountService.remove(id).subscribe({
       next: (res: any) => this.notificationService.showSuccess(res.message),
-      error: (res: any) => this.notificationService.showError(res.message),
+      error: (res: any) =>
+        this.notificationService.showError(res.error.message),
       complete: () => window.location.reload(),
     });
   }

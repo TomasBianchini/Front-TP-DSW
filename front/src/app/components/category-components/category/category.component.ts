@@ -21,7 +21,8 @@ export class CategoryComponent implements OnInit {
       next: (res: any) => {
         this.categories = res.data;
       },
-      error: (res: any) => this.notificationService.showError(res.message),
+      error: (res: any) =>
+        this.notificationService.showError(res.error.message),
     });
   }
 
@@ -34,7 +35,8 @@ export class CategoryComponent implements OnInit {
       next: (res: any) => {
         this.notificationService.showSuccess(res.message);
       },
-      error: (res: any) => this.notificationService.showError(res.message),
+      error: (res: any) =>
+        this.notificationService.showError(res.error.message),
       complete: () => window.location.reload(),
     });
   }

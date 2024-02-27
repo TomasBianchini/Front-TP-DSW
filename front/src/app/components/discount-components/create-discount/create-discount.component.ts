@@ -52,7 +52,8 @@ export class CreateDiscountComponent {
     if (this.discountForm.valid) {
       console.log(this.discountForm.value);
       this.discountService.add(this.discountForm.value).subscribe({
-        error: (res: any) => this.notificationService.showError(res.message),
+        error: (res: any) =>
+          this.notificationService.showError(res.error.message),
         complete: () => {
           this.notificationService.showSuccess('Discount added successfully');
           this.router.navigate(['/discount']);

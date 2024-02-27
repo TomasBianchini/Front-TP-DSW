@@ -1,0 +1,6 @@
+// TODO:
+// - [ add discount to products view and product view ] Task 1
+// - [ add stock to product view] Task 2
+// - [ check why dropdownlist doesn't work or sometimes works, fix ] Task 3
+// - [ add guard Admin, Seller, User to the routes in app-routing] Task 4
+// - [ ] Task 5

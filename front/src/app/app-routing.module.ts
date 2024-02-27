@@ -17,7 +17,9 @@ import { ListProductComponent } from './components/product-components/list-produ
 import { CreateProductComponent } from './components/product-components/create-product/create-product.component';
 import { EditProductComponent } from './components/product-components/edit-product/edit-product.component';
 import { SellerProductsComponent } from './components/product-components/seller-products/seller-products.component';
+import { ProductDetailsComponent } from './components/product-components/product-details/product-details.component';
 const routes: Routes = [
+  //TODO add guard Admin, Seller, User to the routes
   {
     path: '',
     redirectTo: '/login',
@@ -58,6 +60,7 @@ const routes: Routes = [
       { path: 'create', component: CreateProductComponent },
       { path: 'edit/:id', component: EditProductComponent },
       { path: 'sellerProducts', component: SellerProductsComponent },
+      { path: 'productDetails/:id', component: ProductDetailsComponent },
     ],
   },
   {

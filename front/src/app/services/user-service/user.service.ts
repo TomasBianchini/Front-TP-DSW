@@ -30,16 +30,4 @@ export class UserService {
   remove(id: string) {
     return this.http.delete(`${this.url}/user/${id}`);
   }
-
-  loggedIn() {
-    return !!localStorage.getItem('token');
-  }
-
-  logOut() {
-    localStorage.removeItem('token');
-  }
-
-  getToken() {
-    return localStorage.getItem('token');
-  }
 }

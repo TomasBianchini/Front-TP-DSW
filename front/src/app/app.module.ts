@@ -18,6 +18,12 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { LoginComponent } from './components/login/login.component';
 import { SingUpComponent } from './components/sing-up/sing-up.component';
 import { EditProductComponent } from './components/product-components/edit-product/edit-product.component';
+import { CreateProductComponent } from './components/product-components/create-product/create-product.component';
+import { ListProductComponent } from './components/product-components/list-product/list-product.component';
+import { SellerProductsComponent } from './components/product-components/seller-products/seller-products.component';
+import { ProductDetailsComponent } from './components/product-components/product-details/product-details.component';
+import { ReviewListComponent } from './components/review-components/review-list/review-list.component';
+
 // Material
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
@@ -37,9 +43,8 @@ import { MatCardModule } from '@angular/material/card';
 //guards
 import { AuthGuard } from './guards/auth-guard/auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor-service/token-interceptor.service';
-import { CreateProductComponent } from './components/product-components/create-product/create-product.component';
-import { ListProductComponent } from './components/product-components/list-product/list-product.component';
-import { SellerProductsComponent } from './components/product-components/seller-products/seller-products.component';
+import { CreateReviewComponent } from './components/review-components/create-review/create-review.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +64,9 @@ import { SellerProductsComponent } from './components/product-components/seller-
     CreateProductComponent,
     ListProductComponent,
     SellerProductsComponent,
+    ProductDetailsComponent,
+    ReviewListComponent,
+    CreateReviewComponent,
   ],
   imports: [
     MatCardModule,
