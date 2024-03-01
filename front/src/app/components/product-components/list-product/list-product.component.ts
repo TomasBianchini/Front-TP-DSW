@@ -15,7 +15,8 @@ export class ListProductComponent implements OnInit {
   products!: Product[];
   ngOnInit() {
     this.productService.findAll().subscribe({
-      error: (res: any) => this.notificationService.showError(res.message),
+      error: (res: any) =>
+        this.notificationService.showError(res.error.message),
       next: (res: any) => {
         this.products = res.data;
         this.products.forEach((product) => {

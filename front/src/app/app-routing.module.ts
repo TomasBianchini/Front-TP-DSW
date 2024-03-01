@@ -13,6 +13,8 @@ import { LoginComponent } from './components/login/login.component';
 import { SingUpComponent } from './components/sing-up/sing-up.component';
 
 import { AuthGuard } from './guards/auth-guard/auth.guard';
+import { AdminGuard } from './guards/auth-guard/admin-guard';
+import { SellerGuard } from './guards/auth-guard/seller-guard';
 import { ListProductComponent } from './components/product-components/list-product/list-product.component';
 import { CreateProductComponent } from './components/product-components/create-product/create-product.component';
 import { EditProductComponent } from './components/product-components/edit-product/edit-product.component';
@@ -27,7 +29,7 @@ const routes: Routes = [
   },
   {
     path: 'category',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, AdminGuard],
     children: [
       { path: '', component: CategoryComponent },
       { path: 'create', component: CreateCategoryComponent },
@@ -36,7 +38,7 @@ const routes: Routes = [
   },
   {
     path: 'discount',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, AdminGuard],
     children: [
       { path: '', component: DiscountComponent },
       { path: 'create', component: CreateDiscountComponent },
@@ -45,7 +47,7 @@ const routes: Routes = [
   },
   {
     path: 'payment_type',
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, AdminGuard],
     children: [
       { path: '', component: PaymentTypeComponent },
       { path: 'create', component: CreatePaymentTypeComponent },
@@ -57,9 +59,21 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', component: ListProductComponent },
-      { path: 'create', component: CreateProductComponent },
-      { path: 'edit/:id', component: EditProductComponent },
-      { path: 'sellerProducts', component: SellerProductsComponent },
+      {
+        path: 'create',
+        component: CreateProductComponent,
+        canActivate: [SellerGuard],
+      },
+      {
+        path: 'edit/:id',
+        component: EditProductComponent,
+        canActivate: [SellerGuard],
+      },
+      {
+        path: 'sellerProducts',
+        component: SellerProductsComponent,
+        canActivate: [SellerGuard],
+      },
       { path: 'productDetails/:id', component: ProductDetailsComponent },
     ],
   },

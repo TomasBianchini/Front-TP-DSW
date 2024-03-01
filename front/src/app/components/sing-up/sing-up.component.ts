@@ -36,16 +36,18 @@ export class SingUpComponent implements OnInit {
     if (this.userForm.valid) {
       if (this.userForm.value.type === 'User') {
         this.userService.add(this.userForm.value).subscribe({
-          error: (res: any) => this.notificationService.showError(res.message),
-          complete: () => {
+          error: (res: any) =>
+            this.notificationService.showError(res.error.message),
+          next: () => {
             this.notificationService.showSuccess('User added successfully');
             this.router.navigate(['/login']);
           },
         });
       } else {
         this.sellerService.add(this.userForm.value).subscribe({
-          error: (res: any) => this.notificationService.showError(res.message),
-          complete: () => {
+          error: (res: any) =>
+            this.notificationService.showError(res.error.message),
+          next: () => {
             this.notificationService.showSuccess('User added successfully');
             this.router.navigate(['/login']);
           },

@@ -36,7 +36,8 @@ export class EditPaymentTypeComponent {
           payment_type: res.data.payment_type,
           state: res.data.state,
         }),
-      error: (res: any) => this.notificationService.showError(res.message),
+      error: (res: any) =>
+        this.notificationService.showError(res.error.message),
     });
   }
 

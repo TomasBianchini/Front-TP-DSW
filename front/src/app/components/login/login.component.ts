@@ -29,12 +29,20 @@ export class LoginComponent {
   onSubmit() {
     this.loginService.login(this.loginForm.value).subscribe({
       next: (res: any) => {
+        const fechaExpiracion = new Date();
+        fechaExpiracion.setTime(fechaExpiracion.getTime() + 7200 * 1000); // 2 hours
+        localStorage.setItem(
+          'tokenExpiration',
+          fechaExpiracion.getTime().toString()
+        );
         localStorage.setItem('token', res.token);
+        localStorage.setItem('user', JSON.stringify(res.data));
         this.notificationService.showSuccess('Login successful');
       },
-      error: (res: any) => this.notificationService.showError(res.message),
+      error: (res: any) =>
+        this.notificationService.showError(res.error.message),
       //TODO change this to navigate to the correct page which is products
-      complete: () => this.router.navigate(['/category']),
+      complete: () => this.router.navigate(['/product']),
     });
   }
 }

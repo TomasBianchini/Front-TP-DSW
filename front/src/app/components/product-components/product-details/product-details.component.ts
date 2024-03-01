@@ -23,7 +23,8 @@ export class ProductDetailsComponent {
   ngOnInit() {
     this.productId = this.route.snapshot.params['id'];
     this.productService.findOne(this.productId).subscribe({
-      error: (res: any) => this.notificationService.showError(res.message),
+      error: (res: any) =>
+        this.notificationService.showError(res.error.message),
       next: (res: any) => {
         this.product = res.data;
         if (this.product.reviews.length > 0) {

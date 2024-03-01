@@ -12,8 +12,21 @@ export class LoginService {
   login(user: any) {
     return this.httpClient.post(`${this.url}/login`, user);
   }
+
   loggedIn(): boolean {
-    return !!localStorage.getItem('token');
+    const token = localStorage.getItem('token');
+    const tokenExpiracion = localStorage.getItem('tokenExpiration');
+    if (!token || !tokenExpiracion) {
+      return false;
+    }
+    const fechaActual = new Date().getTime();
+    if (fechaActual > parseInt(tokenExpiracion)) {
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+      localStorage.removeItem('tokenExpiration');
+      return false;
+    }
+    return true;
   }
 
   logOut() {

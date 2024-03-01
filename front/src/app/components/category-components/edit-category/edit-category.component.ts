@@ -37,7 +37,8 @@ export class EditCategoryComponent {
           category: res.data.category,
           state: res.data.state,
         }),
-      error: (res: any) => this.notificationService.showError(res.message),
+      error: (res: any) =>
+        this.notificationService.showError(res.error.message),
     });
   }
 

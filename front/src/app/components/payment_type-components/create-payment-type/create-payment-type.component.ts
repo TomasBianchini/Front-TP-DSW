@@ -30,7 +30,8 @@ export class CreatePaymentTypeComponent {
   onSubmit() {
     if (this.payment_typeForm.valid) {
       this.payment_typeService.add(this.payment_typeForm.value).subscribe({
-        error: (res: any) => this.notificationService.showError(res.message),
+        error: (res: any) =>
+          this.notificationService.showError(res.error.message),
         complete: () => {
           this.notificationService.showSuccess(
             'Payment type added successfully'

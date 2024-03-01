@@ -37,7 +37,8 @@ export class EditDiscountComponent {
     });
     this.categoryService.findAll().subscribe({
       next: (res: any) => (this.categories = res.data),
-      error: (res: any) => this.notificationService.showError(res.message),
+      error: (res: any) =>
+        this.notificationService.showError(res.error.message),
     });
 
     this.discountService.findOne(this.discountId).subscribe({
@@ -47,11 +48,27 @@ export class EditDiscountComponent {
           state: res.data.state,
           category_id: res.data.category.id,
         }),
-      error: (res: any) => this.notificationService.showError(res.message),
+      error: (res: any) =>
+        this.notificationService.showError(res.error.message),
     });
   }
 
   onSubmit() {
-    console.log(this.discountForm.value);
+    if (this.discountForm.valid) {
+      this.discountService
+        .update(this.discountId, this.discountForm.value)
+        .subscribe({
+          error: (res: any) =>
+            this.notificationService.showError(res.error.message),
+          next: () => {
+            this.notificationService.showSuccess(
+              'Discount updated successfully'
+            );
+            this.router.navigate(['/discount']);
+          },
+        });
+    } else {
+      this.notificationService.showError('Invalid form data');
+    }
   }
 }

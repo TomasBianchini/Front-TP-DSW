@@ -32,7 +32,8 @@ export class CreateCategoryComponent implements OnInit {
     if (this.categoryForm.valid) {
       console.log(this.categoryForm.value);
       this.categoryService.add(this.categoryForm.value).subscribe({
-        error: (res: any) => this.notificationService.showError(res.message),
+        error: (res: any) =>
+          this.notificationService.showError(res.error.message),
         complete: () => {
           this.notificationService.showSuccess('Category added successfully');
           this.router.navigate(['/category']);
