@@ -19,6 +19,7 @@ export class ListProductComponent implements OnInit {
   products!: Product[];
   productFilter: ProductFilter = {};
   categories!: Category[];
+  allProducts!: Product[];
   ngOnInit() {
     this.productFilter.state = 'Active';
     this.productService.findAll(this.productFilter).subscribe({
@@ -36,6 +37,7 @@ export class ListProductComponent implements OnInit {
             );
           }
         });
+        this.allProducts = this.products;
       },
     });
     this.categoryService.findAll().subscribe({
@@ -45,9 +47,13 @@ export class ListProductComponent implements OnInit {
     });
   }
 
-  filterProducts(id: string) {
-    this.products = this.products.filter((product) => {
-      return product.category._id === id;
+  filterProducts(category: string) {
+    if (category === 'all') {
+      this.products = this.allProducts;
+      return;
+    }
+    this.products = this.allProducts.filter((product) => {
+      return product.category.category === category;
     });
   }
 }

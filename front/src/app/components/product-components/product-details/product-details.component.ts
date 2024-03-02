@@ -19,7 +19,7 @@ export class ProductDetailsComponent {
 
   product!: Product;
   productId!: string;
-
+  quantity = 1;
   ngOnInit() {
     this.productId = this.route.snapshot.params['id'];
     this.productService.findOne(this.productId).subscribe({
@@ -48,5 +48,15 @@ export class ProductDetailsComponent {
         }
       },
     });
+  }
+
+  incrementQuantity() {
+    if (this.quantity < this.product.stock) this.quantity += 1;
+  }
+  decrementQuantity() {
+    if (this.quantity > 1) this.quantity--;
+  }
+  addToCart() {
+    this.notificationService.showSuccess('We are working on it!:)');
   }
 }
