@@ -44,6 +44,7 @@ import { MatCardModule } from '@angular/material/card';
 import { AuthGuard } from './guards/auth-guard/auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor-service/token-interceptor.service';
 import { CreateReviewComponent } from './components/review-components/create-review/create-review.component';
+import { CompleteCartComponent } from './components/cart-components/complete-cart/complete-cart.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { CreateReviewComponent } from './components/review-components/create-rev
     ProductDetailsComponent,
     ReviewListComponent,
     CreateReviewComponent,
+    CompleteCartComponent,
   ],
   imports: [
     MatCardModule,

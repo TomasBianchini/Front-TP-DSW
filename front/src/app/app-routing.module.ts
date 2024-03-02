@@ -20,6 +20,7 @@ import { CreateProductComponent } from './components/product-components/create-p
 import { EditProductComponent } from './components/product-components/edit-product/edit-product.component';
 import { SellerProductsComponent } from './components/product-components/seller-products/seller-products.component';
 import { ProductDetailsComponent } from './components/product-components/product-details/product-details.component';
+import { CompleteCartComponent } from './components/cart-components/complete-cart/complete-cart.component';
 const routes: Routes = [
   //TODO add guard Admin, Seller, User to the routes
   {
@@ -75,6 +76,16 @@ const routes: Routes = [
         canActivate: [SellerGuard],
       },
       { path: 'productDetails/:id', component: ProductDetailsComponent },
+    ],
+  },
+  {
+    path: 'cart',
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'complete-cart',
+        component: CompleteCartComponent,
+      },
     ],
   },
   {
