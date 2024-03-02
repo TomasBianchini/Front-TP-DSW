@@ -15,7 +15,7 @@
               >Products</a
             >
           </li>
-          <li>
+          <li *ngIf="isAdmin()">
             <a
               routerLink="/discount"
               routerLinkActive="active"
@@ -23,7 +23,7 @@
               >Discounts</a
             >
           </li>
-          <li>
+          <li *ngIf="isAdmin()">
             <a
               routerLink="/category"
               routerLinkActive="active"
@@ -31,7 +31,7 @@
               >Categories</a
             >
           </li>
-          <li>
+          <li *ngIf="isAdmin()">
             <a
               routerLink="/payment_type"
               routerLinkActive="active"
@@ -39,7 +39,7 @@
               >Payment types</a
             >
           </li>
-          <li>
+          <li *ngIf="isSeller()">
             <a
               routerLink="/product/sellerProducts"
               routerLinkActive="active"

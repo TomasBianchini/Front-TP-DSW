@@ -1,6 +1,7 @@
 import { Discount } from './Discount.js';
 
 export interface Category {
+  _id: string;
   id: string;
   discounts: Discount[];
   category: string;

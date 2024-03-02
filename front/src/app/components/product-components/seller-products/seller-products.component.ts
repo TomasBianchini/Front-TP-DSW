@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/Entities/Product.js';
+import { ProductFilter } from 'src/app/Entities/ProductFilter.js';
 import { NotificationService } from 'src/app/services/notication-service/notification.service';
 import { ProductService } from 'src/app/services/product-service/product.service';
 
@@ -16,8 +17,10 @@ export class SellerProductsComponent {
     private productService: ProductService
   ) {}
   products!: Product[];
+  productFilter: ProductFilter = {};
   ngOnInit() {
-    this.productService.findAll().subscribe({
+    this.productFilter.seller = JSON.parse(localStorage.getItem('user')!).id;
+    this.productService.findAll(this.productFilter).subscribe({
       error: (res: any) =>
         this.notificationService.showError(res.error.message),
       next: (res: any) => {
