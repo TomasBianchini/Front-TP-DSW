@@ -2,11 +2,12 @@ import { Cart } from './Cart.js';
 import { Product } from './Product.js';
 
 export interface Order {
-  id: string;
-  product: Product;
+  id: string | undefined;
+  product: string | Product;
   quantity: number;
   subtotal: number;
-  createdAt: Date;
-  updatedAt: Date;
-  cart: Cart;
+  user: string | null;
+  createdAt: Date | undefined;
+  updatedAt: Date | undefined;
+  cart: Cart | undefined;
 }

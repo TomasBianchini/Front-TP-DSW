@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http/index.js';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Order } from 'src/app/Entities/Order.js';
 

@@ -28,6 +28,8 @@ export class NavBarComponent {
       .subscribe({
         next: (res: any) => {
           this.cart = res.data;
+        },
+        complete: () => {
           this.showPendingCart();
         },
       });
@@ -53,6 +55,8 @@ export class NavBarComponent {
   }
 
   showPendingCart(): boolean {
-    return this.cart && this.cart[0].state === 'Pending' ? true : false;
+    return (
+      this.cart && this.cart.length > 0 && this.cart[0].state === 'Pending'
+    );
   }
 }
