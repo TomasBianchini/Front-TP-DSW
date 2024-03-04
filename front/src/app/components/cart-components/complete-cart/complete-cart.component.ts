@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cart } from 'src/app/Entities/Cart';
+import { Payment_type } from 'src/app/Entities/Payment_type';
 import { CartService } from 'src/app/services/cart-service/cart.service';
 import { NotificationService } from 'src/app/services/notication-service/notification.service';
 import { OrderService } from 'src/app/services/order-service/order.service';
+import { PaymentTypeService } from 'src/app/services/payment_type-service/payment-type.service';
 
 @Component({
   selector: 'app-complete-cart',
@@ -15,9 +17,11 @@ export class CompleteCartComponent {
     private notificationService: NotificationService,
     private router: Router,
     private cartService: CartService,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private paymentTypeService: PaymentTypeService
   ) {}
   cart!: Cart;
+  payment_types!: Payment_type[];
   ngOnInit() {
     const userDataString = localStorage.getItem('user');
     if (userDataString) {
@@ -47,11 +51,16 @@ export class CompleteCartComponent {
         },
       });
     }
+    this.paymentTypeService.findAll().subscribe({
+      next: (res: any) => {
+        this.payment_types = res.data;
+      },
+    });
   }
 
-  removeItem(id: string) {
+  removeOrder(id: string) {
     const confirmed = window.confirm(
-      'Are you sure you want to delete this item?'
+      'Are you sure you want to delete this order?'
     );
     if (confirmed) {
       this.orderService.remove(id).subscribe({

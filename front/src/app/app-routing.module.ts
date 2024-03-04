@@ -21,6 +21,9 @@ import { EditProductComponent } from './components/product-components/edit-produ
 import { SellerProductsComponent } from './components/product-components/seller-products/seller-products.component';
 import { ProductDetailsComponent } from './components/product-components/product-details/product-details.component';
 import { CompleteCartComponent } from './components/cart-components/complete-cart/complete-cart.component';
+import { ShippingComponent } from './components/shipping-components/shipping/shipping.component';
+import { CreateShippingComponent } from './components/shipping-components/create-shipping/create-shipping.component';
+import { EditShippingComponent } from './components/shipping-components/edit-shipping/edit-shipping.component';
 const routes: Routes = [
   //TODO add guard Admin, Seller, User to the routes
   {
@@ -53,6 +56,15 @@ const routes: Routes = [
       { path: '', component: PaymentTypeComponent },
       { path: 'create', component: CreatePaymentTypeComponent },
       { path: 'edit/:id', component: EditPaymentTypeComponent },
+    ],
+  },
+  {
+    path: 'shipping',
+    canActivate: [AuthGuard, AdminGuard],
+    children: [
+      { path: '', component: ShippingComponent },
+      { path: 'create', component: CreateShippingComponent },
+      { path: 'edit/:id', component: EditShippingComponent },
     ],
   },
   {

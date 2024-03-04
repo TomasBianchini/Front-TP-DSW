@@ -1,10 +1,12 @@
 import { User } from './User.js';
-import { Order } from './Order.js';
+import { Shipping } from './Shipping.js';
+import { Payment_type } from './Payment_type.js';
 
 export interface Cart {
   id: string;
-  shipment: string;
+  shipping: Shipping;
   total: number;
+  payment_type: Payment_type;
   state: 'Completed' | 'Pending' | 'Canceled';
   createdAt: Date;
   updatedAt: Date;
