@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cart } from 'src/app/Entities/Cart';
 import { Payment_type } from 'src/app/Entities/Payment_type';
+import { Shipping } from 'src/app/Entities/Shipping.js';
 import { CartService } from 'src/app/services/cart-service/cart.service';
 import { NotificationService } from 'src/app/services/notication-service/notification.service';
 import { OrderService } from 'src/app/services/order-service/order.service';
 import { PaymentTypeService } from 'src/app/services/payment_type-service/payment-type.service';
+import { ShippingService } from 'src/app/services/shipping-service/shipping.service';
 
 @Component({
   selector: 'app-complete-cart',
@@ -18,16 +20,21 @@ export class CompleteCartComponent {
     private router: Router,
     private cartService: CartService,
     private orderService: OrderService,
-    private paymentTypeService: PaymentTypeService
+    private paymentTypeService: PaymentTypeService,
+    private shippingService: ShippingService
   ) {}
   cart!: Cart;
   payment_types!: Payment_type[];
+  shippings!: Shipping[];
+  shippingChoosed!: Shipping;
+  payment_typeChoosed!: Payment_type;
   ngOnInit() {
     const userDataString = localStorage.getItem('user');
     if (userDataString) {
       const user = JSON.parse(userDataString);
       this.cartService.findAll({ user: user.id, state: 'Pending' }).subscribe({
         next: (res: any) => {
+          console.log(res);
           this.cart = res.data[0];
           this.cart.total = 0;
           this.cart.orders.forEach((order) => {
@@ -54,6 +61,11 @@ export class CompleteCartComponent {
     this.paymentTypeService.findAll().subscribe({
       next: (res: any) => {
         this.payment_types = res.data;
+      },
+    });
+    this.shippingService.findAll().subscribe({
+      next: (res: any) => {
+        this.shippings = res.data;
       },
     });
   }
@@ -107,17 +119,37 @@ export class CompleteCartComponent {
     });
   }
 
+  onShippingMethodSelected(event: any) {
+    this.shippingChoosed = event;
+  }
+
+  showCart() {
+    return this.cart && this.cart.orders && this.cart.orders.length > 0;
+  }
+  onPyment_typeSelected(event: any) {
+    this.payment_typeChoosed = event;
+  }
   completeCart() {
     this.cart.state = 'Completed';
-    this.notificationService.showSuccess('We are working on it!');
-    // this.cartService.update(this.cart.id, this.cart).subscribe({
-    //   next: (res: any) => {
-    //     this.notificationService.showSuccess(res.message);
-    //     this.router.navigate(['/']);
-    //   },
-    //   error: (res: any) => {
-    //     this.notificationService.showError(res.error.message);
-    //   },
-    // });
+
+    if (this.shippingChoosed && this.payment_typeChoosed) {
+      this.cart.shipping = this.shippingChoosed;
+      this.cart.payment_type = this.payment_typeChoosed;
+      this.cart.total += this.cart.shipping.price;
+      this.cartService.update(this.cart.id, this.cart).subscribe({
+        next: (res: any) => {
+          this.notificationService.showSuccess(res.message);
+          this.router.navigate(['/cart']);
+        },
+        error: (res: any) => {
+          this.notificationService.showError(res.error.message);
+        },
+      });
+    } else {
+      this.notificationService.showError(
+        'Please choose a shipping method and a payment type'
+      );
+      return;
+    }
   }
 }

@@ -24,7 +24,7 @@
         class="min-h-screen w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5"
       >
         <ng-container>
-          <ng-container *ngIf="products.length === 0">
+          <ng-container *ngIf="products && products.length === 0">
             <div class="flex justify-center items-center">
               <div class="flex flex-col items-center">
                 <h1

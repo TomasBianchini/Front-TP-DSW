@@ -4,4 +4,5 @@ export interface Payment_type {
   createdAt: Date;
   updatedAt: Date;
   _id: string;
+  id: string;
 }

@@ -1,120 +1,165 @@
-<body>
-  <div class="h-screen bg-gray-100 pt-20">
-    <h1 class="mb-10 text-center text-2xl font-bold">Cart Orders</h1>
-    <div
-      class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0"
+<div *ngIf="!showCart(); else content">
+  <br />
+  <br />
+  <h1 class="mb-10 text-center text-2xl font-bold">
+    Your cart is empty. Go to products and add some!
+    <button
+      class="bg-indigo-500 text-white font-mono font-normal items-center h-10 px-4 rounded-full hover:bg-indigo-600 active:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300 mt-4"
+      [routerLink]="'/product'"
     >
-      <div class="rounded-lg md:w-2/3">
-        <div
-          class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
-          *ngFor="let order of cart.orders"
-        >
-          <img
-            [src]="order.product.img_url"
-            alt="product-image"
-            class="w-full rounded-lg sm:w-40"
-          />
-          <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
-            <div class="mt-5 sm:mt-0">
-              <h2 class="text-lg font-bold text-gray-900">
-                {{ order.product.name }}
-              </h2>
-              <p class="mt-1 text-xs text-gray-700">
-                {{ order.product.description }}
-              </p>
-            </div>
-            <div
-              class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6"
-            >
-              <div class="flex items-center border-gray-100">
-                <button
-                  (click)="decrermentQuantity(order.id)"
-                  class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50"
-                >
-                  -
-                </button>
-                <input
-                  class="h-8 w-8 border bg-white text-center text-xs outline-none"
-                  type="number"
-                  [value]="order.quantity"
-                  min="1"
-                />
-                <button
-                  (click)="incrementQuantity(order.id)"
-                  class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"
-                >
-                  +
-                </button>
-              </div>
-              <div class="flex items-center space-x-4">
-                <p class="text-sm">${{ order.subtotal }}</p>
-                <button (click)="removeOrder(order.id)">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sub total -->
+      Products
+    </button>
+  </h1>
+</div>
+<ng-template #content>
+  <body>
+    <div class="h-screen bg-gray-100 pt-20">
+      <h1 class="mb-10 text-center text-2xl font-bold">Cart Orders</h1>
       <div
-        class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3"
+        class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0"
       >
-        <div class="mb-2 flex justify-between">
-          <p class="text-gray-700">Subtotal</p>
-          <p class="text-gray-700">{{ cart.total }}</p>
-        </div>
-        <div class="flex justify-between">
-          <p class="text-gray-700">Shipping</p>
-          <p class="text-gray-700">$4.99</p>
-        </div>
-        <hr class="my-4" />
-        <div class="flex justify-between">
-          <p class="text-lg font-bold">Total</p>
-          <div class="">
-            <p class="mb-1 text-lg font-bold">${{ cart.total + 4.99 }} USD</p>
-            <p class="text-sm text-gray-700">including VAT</p>
+        <div class="rounded-lg md:w-2/3">
+          <div
+            class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start"
+            *ngFor="let order of cart.orders"
+          >
+            <img
+              [src]="order.product.img_url"
+              alt="product-image"
+              class="w-full rounded-lg sm:w-40"
+            />
+            <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
+              <div class="mt-5 sm:mt-0">
+                <h2 class="text-lg font-bold text-gray-900">
+                  {{ order.product.name }}
+                </h2>
+                <p class="mt-1 text-xs text-gray-700">
+                  {{ order.product.description }}
+                </p>
+              </div>
+              <div
+                class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6"
+              >
+                <div class="flex items-center border-gray-100">
+                  <button
+                    (click)="decrermentQuantity(order.id)"
+                    class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50"
+                  >
+                    -
+                  </button>
+                  <input
+                    class="h-8 w-8 border bg-white text-center text-xs outline-none"
+                    type="number"
+                    [value]="order.quantity"
+                    min="1"
+                  />
+                  <button
+                    (click)="incrementQuantity(order.id)"
+                    class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50"
+                  >
+                    +
+                  </button>
+                </div>
+                <div class="flex items-center space-x-4">
+                  <p class="text-sm">${{ order.subtotal }}</p>
+                  <button (click)="removeOrder(order.id)">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="flex justify-between">
-          <p class="text-lg font-bold">Payment Type</p>
-          <div>
-            <mat-form-field class="w-full max-w-xs">
-              <mat-label>Choose category</mat-label>
-              <mat-select class="text-sm py-1 px-2 h-8">
-                <ng-container *ngFor="let payment_type of payment_types">
+
+        <!-- Sub total -->
+        <div
+          class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3"
+        >
+          <div class="mb-2 flex justify-between">
+            <p class="text-gray-700">Subtotal</p>
+            <p class="text-gray-700">{{ cart.total }}</p>
+          </div>
+          <div class="flex justify-between">
+            <mat-form-field class="max-w-xs">
+              <mat-label>Choose shipmethod</mat-label>
+              <mat-select
+                class="text-sm py-1 px-2 h-8"
+                (selectionChange)="onShippingMethodSelected($event.value)"
+              >
+                <ng-container *ngFor="let shipping of shippings">
                   <mat-option
                     class="mb-1 text-lg font-bold"
-                    [value]="payment_type.payment_type"
-                    >{{ payment_type.payment_type }}</mat-option
+                    [value]="shipping"
+                    >{{ shipping.shipmethod }}</mat-option
                   >
                 </ng-container>
               </mat-select>
             </mat-form-field>
-            <p class="mb-1 text-lg font-bold"></p>
+            <div *ngIf="!shippingChoosed; else price">
+              <p class="text-gray-700">0</p>
+            </div>
+            <ng-template #price>
+              <p class="text-gray-700">{{ shippingChoosed.price }}</p>
+            </ng-template>
           </div>
+          <hr class="my-4" />
+          <div class="flex justify-between">
+            <p class="text-lg font-bold">Total</p>
+            <div class="">
+              <div *ngIf="!shippingChoosed; else priceTotal">
+                <p class="mb-1 text-lg font-bold">${{ cart.total }} USD</p>
+              </div>
+              <ng-template #priceTotal>
+                <p class="text-gray-700">
+                  {{ shippingChoosed.price + cart.total }}
+                </p>
+              </ng-template>
+
+              <p class="text-sm text-gray-700">including VAT</p>
+            </div>
+          </div>
+          <div class="flex justify-between">
+            <p class="text-lg font-bold">Payment Type</p>
+            <div>
+              <mat-form-field class="max-w-xs">
+                <mat-label>Choose payment type</mat-label>
+                <mat-select
+                  class="text-sm py-1 px-2 h-8"
+                  (selectionChange)="onPyment_typeSelected($event.value)"
+                >
+                  <ng-container *ngFor="let payment_type of payment_types">
+                    <mat-option
+                      class="mb-1 text-lg font-bold"
+                      [value]="payment_type"
+                      >{{ payment_type.payment_type }}</mat-option
+                    >
+                  </ng-container>
+                </mat-select>
+              </mat-form-field>
+              <p class="mb-1 text-lg font-bold"></p>
+            </div>
+          </div>
+          <button
+            class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600"
+            (click)="completeCart()"
+          >
+            Complete order
+          </button>
         </div>
-        <button
-          class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600"
-          (click)="completeCart()"
-        >
-          Complete order
-        </button>
       </div>
     </div>
-  </div>
-</body>
+  </body>
+</ng-template>

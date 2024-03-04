@@ -1,1 +1,42 @@
-<p>create-shipping works!</p>
+<div class="bg-gray-200 min-h-screen flex flex-col items-center justify-center">
+  <div class="max-w-md w-full sm:p-6 mx-auto">
+    <mat-card class="bg-gray-800">
+      <mat-card-content class="p-6">
+        <form [formGroup]="shippingForm" (ngSubmit)="onSubmit()">
+          <div class="mb-4">
+            <mat-form-field class="w-full">
+              <mat-label>Shipmethod</mat-label>
+              <input
+                matInput
+                formControlName="shipmethod"
+                placeholder="Enter shipmethod"
+              />
+            </mat-form-field>
+            <mat-form-field class="w-full">
+              <mat-label>Price</mat-label>
+              <input
+                matInput
+                type="number"
+                formControlName="price"
+                placeholder="Enter price"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>Edit Status</mat-label>
+              <mat-select formControlName="state">
+                <mat-option value="Active">Active</mat-option>
+                <mat-option value="Archived">Archived</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="flex justify-center">
+            <button mat-raised-button color="primary" type="submit">
+              Submit
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
