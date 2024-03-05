@@ -4,9 +4,9 @@ import { Payment_type } from './Payment_type.js';
 
 export interface Cart {
   id: string;
-  shipping: Shipping;
+  shipping: any;
   total: number;
-  payment_type: Payment_type;
+  payment_type: any;
   state: 'Completed' | 'Pending' | 'Canceled';
   createdAt: Date;
   updatedAt: Date;

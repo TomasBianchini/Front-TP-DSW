@@ -34,7 +34,6 @@ export class CompleteCartComponent {
       const user = JSON.parse(userDataString);
       this.cartService.findAll({ user: user.id, state: 'Pending' }).subscribe({
         next: (res: any) => {
-          console.log(res);
           this.cart = res.data[0];
           this.cart.total = 0;
           this.cart.orders.forEach((order) => {
@@ -133,13 +132,17 @@ export class CompleteCartComponent {
     this.cart.state = 'Completed';
 
     if (this.shippingChoosed && this.payment_typeChoosed) {
-      this.cart.shipping = this.shippingChoosed;
-      this.cart.payment_type = this.payment_typeChoosed;
-      this.cart.total += this.cart.shipping.price;
+      this.cart.shipping = this.shippingChoosed.id;
+      this.cart.payment_type = this.payment_typeChoosed.id;
+      this.cart.total += this.shippingChoosed.price;
+      this.cart.orders.forEach((order) => {
+        order.product = order.product.id as string;
+        order.cart = order.cart.id as string;
+      });
       this.cartService.update(this.cart.id, this.cart).subscribe({
         next: (res: any) => {
           this.notificationService.showSuccess(res.message);
-          this.router.navigate(['/cart']);
+          window.location.reload();
         },
         error: (res: any) => {
           this.notificationService.showError(res.error.message);

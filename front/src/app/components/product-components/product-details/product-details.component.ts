@@ -67,7 +67,6 @@ export class ProductDetailsComponent {
   }
   addToCart() {
     if (this.quantity < this.product.stock) {
-      console.log(this.product);
       this.order = {
         product: this.product._id,
         quantity: this.quantity,
