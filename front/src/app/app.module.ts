@@ -44,10 +44,12 @@ import { MatCardModule } from '@angular/material/card';
 import { AuthGuard } from './guards/auth-guard/auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor-service/token-interceptor.service';
 import { CreateReviewComponent } from './components/review-components/create-review/create-review.component';
-import { CompleteCartComponent } from './components/cart-components/complete-cart/complete-cart.component';
 import { ShippingComponent } from './components/shipping-components/shipping/shipping.component';
 import { CreateShippingComponent } from './components/shipping-components/create-shipping/create-shipping.component';
 import { EditShippingComponent } from './components/shipping-components/edit-shipping/edit-shipping.component';
+import { CartListComponent } from './components/cart-components/cart-list/cart-list.component';
+import { CompletedCartComponent } from './components/cart-components/completed-cart/completed-cart.component';
+import { PendingCartComponent } from './components/cart-components/pending-cart/pending-cart.component';
 
 @NgModule({
   declarations: [
@@ -71,10 +73,12 @@ import { EditShippingComponent } from './components/shipping-components/edit-shi
     ProductDetailsComponent,
     ReviewListComponent,
     CreateReviewComponent,
-    CompleteCartComponent,
     ShippingComponent,
     CreateShippingComponent,
     EditShippingComponent,
+    CartListComponent,
+    CompletedCartComponent,
+    PendingCartComponent,
   ],
   imports: [
     MatCardModule,

@@ -20,10 +20,10 @@ import { CreateProductComponent } from './components/product-components/create-p
 import { EditProductComponent } from './components/product-components/edit-product/edit-product.component';
 import { SellerProductsComponent } from './components/product-components/seller-products/seller-products.component';
 import { ProductDetailsComponent } from './components/product-components/product-details/product-details.component';
-import { CompleteCartComponent } from './components/cart-components/complete-cart/complete-cart.component';
 import { ShippingComponent } from './components/shipping-components/shipping/shipping.component';
 import { CreateShippingComponent } from './components/shipping-components/create-shipping/create-shipping.component';
 import { EditShippingComponent } from './components/shipping-components/edit-shipping/edit-shipping.component';
+import { CartListComponent } from './components/cart-components/cart-list/cart-list.component';
 const routes: Routes = [
   //TODO add guard Admin, Seller, User to the routes
   {
@@ -96,7 +96,7 @@ const routes: Routes = [
     children: [
       {
         path: 'complete-cart',
-        component: CompleteCartComponent,
+        component: CartListComponent,
       },
     ],
   },

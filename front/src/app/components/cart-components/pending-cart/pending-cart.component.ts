@@ -10,11 +10,11 @@ import { PaymentTypeService } from 'src/app/services/payment_type-service/paymen
 import { ShippingService } from 'src/app/services/shipping-service/shipping.service';
 
 @Component({
-  selector: 'app-complete-cart',
-  templateUrl: './complete-cart.component.html',
-  styleUrls: ['./complete-cart.component.css'],
+  selector: 'app-pending-cart',
+  templateUrl: './pending-cart.component.html',
+  styleUrls: ['./pending-cart.component.css'],
 })
-export class CompleteCartComponent {
+export class PendingCartComponent {
   constructor(
     private notificationService: NotificationService,
     private router: Router,
