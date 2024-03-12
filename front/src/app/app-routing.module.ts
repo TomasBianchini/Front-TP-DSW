@@ -24,6 +24,7 @@ import { ShippingComponent } from './components/shipping-components/shipping/shi
 import { CreateShippingComponent } from './components/shipping-components/create-shipping/create-shipping.component';
 import { EditShippingComponent } from './components/shipping-components/edit-shipping/edit-shipping.component';
 import { CartListComponent } from './components/cart-components/cart-list/cart-list.component';
+import { CreateReviewComponent } from './components/review-components/create-review/create-review.component';
 const routes: Routes = [
   //TODO add guard Admin, Seller, User to the routes
   {
@@ -66,6 +67,11 @@ const routes: Routes = [
       { path: 'create', component: CreateShippingComponent },
       { path: 'edit/:id', component: EditShippingComponent },
     ],
+  },
+  {
+    path: 'review',
+    component: CreateReviewComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'product',

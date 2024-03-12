@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/Entities/Category';
 import { CategoryService } from 'src/app/services/category-service/category.service';
-import { NotificationService } from 'src/app/services/notication-service/notification.service';
+import { NotificationService } from 'src/app/services/notification-service/notification.service';
 
 @Component({
   selector: 'app-category',

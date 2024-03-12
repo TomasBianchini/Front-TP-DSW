@@ -3,7 +3,7 @@ import { Category } from 'src/app/Entities/Category';
 import { Product } from 'src/app/Entities/Product';
 import { ProductFilter } from 'src/app/Entities/ProductFilter';
 import { CategoryService } from 'src/app/services/category-service/category.service';
-import { NotificationService } from 'src/app/services/notication-service/notification.service';
+import { NotificationService } from 'src/app/services/notification-service/notification.service';
 import { ProductService } from 'src/app/services/product-service/product.service';
 @Component({
   selector: 'app-list-product',

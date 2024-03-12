@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Payment_type } from 'src/app/Entities/Payment_type';
-import { NotificationService } from 'src/app/services/notication-service/notification.service';
+import { NotificationService } from 'src/app/services/notification-service/notification.service';
 import { PaymentTypeService } from 'src/app/services/payment_type-service/payment-type.service';
 
 @Component({

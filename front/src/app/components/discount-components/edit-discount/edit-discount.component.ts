@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category-service/category.service';
 import { DiscountService } from 'src/app/services/discount-service/discount.service';
-import { NotificationService } from 'src/app/services/notication-service/notification.service';
+import { NotificationService } from 'src/app/services/notification-service/notification.service';
 import { Category } from 'src/app/Entities/Category';
 @Component({
   selector: 'app-edit-discount',

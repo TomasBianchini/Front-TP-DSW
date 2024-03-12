@@ -36,4 +36,8 @@ export class CartService {
   remove(id: string) {
     return this.http.delete(`${this.url}/cart/${id}`);
   }
+
+  cancel(cart: Cart) {
+    return this.http.patch(`${this.url}/cart/cancelCart/${cart.id}`, cart);
+  }
 }

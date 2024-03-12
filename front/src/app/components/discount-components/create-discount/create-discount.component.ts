@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { Category } from 'src/app/Entities/Category';
 import { CategoryService } from 'src/app/services/category-service/category.service';
 import { DiscountService } from 'src/app/services/discount-service/discount.service';
-import { NotificationService } from 'src/app/services/notication-service/notification.service';
+import { NotificationService } from 'src/app/services/notification-service/notification.service';
 
 @Component({
   selector: 'app-create-discount',

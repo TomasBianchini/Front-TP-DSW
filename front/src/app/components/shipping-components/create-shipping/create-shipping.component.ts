@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NotificationService } from 'src/app/services/notication-service/notification.service';
+import { NotificationService } from 'src/app/services/notification-service/notification.service';
 import { ShippingService } from 'src/app/services/shipping-service/shipping.service';
 
 @Component({
@@ -22,6 +22,8 @@ export class CreateShippingComponent {
     this.shippingForm = this.formBuilder.group({
       shipmethod: ['', [Validators.required, Validators.maxLength(150)]],
       price: ['', [Validators.required]],
+      estimatedTime: ['', [Validators.required]],
+      cancellationDeadline: ['', [Validators.required]],
       state: [
         '',
         [Validators.required, Validators.pattern(/^(Active|Archived)$/)],

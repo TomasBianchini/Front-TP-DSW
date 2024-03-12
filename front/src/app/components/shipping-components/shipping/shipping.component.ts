@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Shipping } from 'src/app/Entities/Shipping';
-import { NotificationService } from 'src/app/services/notication-service/notification.service';
+import { NotificationService } from 'src/app/services/notification-service/notification.service';
 import { ShippingService } from 'src/app/services/shipping-service/shipping.service';
 
 @Component({
@@ -19,6 +19,8 @@ export class ShippingComponent {
     'shipmethod',
     'price',
     'state',
+    'estimatedTime',
+    'cancellationDeadline',
     'edit',
     'delete',
   ];

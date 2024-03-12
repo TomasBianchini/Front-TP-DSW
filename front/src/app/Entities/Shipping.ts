@@ -3,4 +3,6 @@ export interface Shipping {
   shipmethod: string;
   price: number;
   state: 'Active' | 'Archived';
+  estimatedTime: number;
+  cancellationDeadline: number;
 }

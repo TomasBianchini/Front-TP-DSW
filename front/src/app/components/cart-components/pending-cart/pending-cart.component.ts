@@ -4,7 +4,7 @@ import { Cart } from 'src/app/Entities/Cart';
 import { Payment_type } from 'src/app/Entities/Payment_type';
 import { Shipping } from 'src/app/Entities/Shipping.js';
 import { CartService } from 'src/app/services/cart-service/cart.service';
-import { NotificationService } from 'src/app/services/notication-service/notification.service';
+import { NotificationService } from 'src/app/services/notification-service/notification.service';
 import { OrderService } from 'src/app/services/order-service/order.service';
 import { PaymentTypeService } from 'src/app/services/payment_type-service/payment-type.service';
 import { ShippingService } from 'src/app/services/shipping-service/shipping.service';
@@ -17,7 +17,6 @@ import { ShippingService } from 'src/app/services/shipping-service/shipping.serv
 export class PendingCartComponent {
   constructor(
     private notificationService: NotificationService,
-    private router: Router,
     private cartService: CartService,
     private orderService: OrderService,
     private paymentTypeService: PaymentTypeService,
@@ -26,9 +25,11 @@ export class PendingCartComponent {
   cart!: Cart;
   payment_types!: Payment_type[];
   shippings!: Shipping[];
-  shippingChoosed!: Shipping;
-  payment_typeChoosed!: Payment_type;
+  shippingChoosed!: any;
+  payment_typeChoosed!: any;
   ngOnInit() {
+    this.shippingChoosed = '';
+    this.payment_typeChoosed = '';
     const userDataString = localStorage.getItem('user');
     if (userDataString) {
       const user = JSON.parse(userDataString);
@@ -116,10 +117,6 @@ export class PendingCartComponent {
       }
       this.cart.total += order.subtotal;
     });
-  }
-
-  onShippingMethodSelected(event: any) {
-    this.shippingChoosed = event;
   }
 
   showCart() {

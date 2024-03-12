@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Discount } from 'src/app/Entities/Discount.js';
 import { DiscountService } from 'src/app/services/discount-service/discount.service';
-import { NotificationService } from 'src/app/services/notication-service/notification.service';
+import { NotificationService } from 'src/app/services/notification-service/notification.service';
 
 @Component({
   selector: 'app-discount',

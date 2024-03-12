@@ -15,10 +15,29 @@
             <mat-form-field class="w-full">
               <mat-label>price</mat-label>
               <input
-                type="numbre"
+                type="number"
                 matInput
                 formControlName="price"
                 placeholder="Enter price"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>Estimated Shippping Time</mat-label>
+              <input
+                type="number"
+                matInput
+                formControlName="estimatedTime"
+                placeholder="Enter estimated shippping time in hours"
+              />
+            </mat-form-field>
+            <mat-form-field class="w-full">
+              <mat-label>Cancellation Deadline</mat-label>
+              <input
+                type="number"
+                matInput
+                formControlName="cancellationDeadline"
+                placeholder="Enter cancellation deadline in hours"
               />
             </mat-form-field>
 

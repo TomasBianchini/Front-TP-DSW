@@ -1,6 +1,4 @@
 import { User } from './User.js';
-import { Shipping } from './Shipping.js';
-import { Payment_type } from './Payment_type.js';
 
 export interface Cart {
   id: string;
@@ -12,4 +10,5 @@ export interface Cart {
   updatedAt: Date;
   user: User;
   orders: any[];
+  canCancel: boolean | undefined;
 }

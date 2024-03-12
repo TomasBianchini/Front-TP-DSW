@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/Entities/Product.js';
 import { ProductFilter } from 'src/app/Entities/ProductFilter.js';
-import { NotificationService } from 'src/app/services/notication-service/notification.service';
+import { NotificationService } from 'src/app/services/notification-service/notification.service';
 import { ProductService } from 'src/app/services/product-service/product.service';
 
 @Component({

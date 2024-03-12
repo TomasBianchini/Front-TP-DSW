@@ -11,7 +11,7 @@
 </div>
 <ng-template #content>
   <body>
-    <div class="h-screen bg-gray-100 pt-20">
+    <div class="h-screen pt-5 overflow-y-auto">
       <h1 class="mb-10 text-center text-2xl font-bold">Cart Orders</h1>
       <div
         class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0"
@@ -87,31 +87,44 @@
           class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3"
         >
           <div class="mb-2 flex justify-between">
-            <p class="text-gray-700">Subtotal</p>
+            <p class="font-medium inline-block mb-3 text-sm uppercase">
+              Subtotal
+            </p>
             <p class="text-gray-700">{{ cart.total }}</p>
           </div>
           <div class="flex justify-between">
-            <mat-form-field class="max-w-xs">
-              <mat-label>Choose shipmethod</mat-label>
-              <mat-select
-                class="text-sm py-1 px-2 h-8"
-                (selectionChange)="onShippingMethodSelected($event.value)"
-              >
-                <ng-container *ngFor="let shipping of shippings">
-                  <mat-option
-                    class="mb-1 text-lg font-bold"
-                    [value]="shipping"
-                    >{{ shipping.shipmethod }}</mat-option
-                  >
-                </ng-container>
-              </mat-select>
-            </mat-form-field>
-            <div *ngIf="!shippingChoosed; else price">
-              <p class="text-gray-700">0</p>
+            <div>
+              <p class="font-medium inline-block mb-3 text-sm uppercase">
+                Shipping
+              </p>
+              <div class="demo-full-width">
+                <select
+                  class="block p-2 text-gray-600 w-full text-sm"
+                  [(ngModel)]="shippingChoosed"
+                >
+                  <option value="" disabled selected>Select shipping</option>
+
+                  <ng-container *ngFor="let shipping of shippings">
+                    <option [ngValue]="shipping">
+                      {{ shipping.shipmethod }} shipping - ${{ shipping.price }}
+                    </option>
+                  </ng-container>
+                </select>
+              </div>
             </div>
-            <ng-template #price>
-              <p class="text-gray-700">{{ shippingChoosed.price }}</p>
-            </ng-template>
+          </div>
+
+          <div class="mb-2 flex justify-between">
+            <div
+              *ngIf="
+                shippingChoosed && !(shippingChoosed.shipmethod === 'Pickup')
+              "
+            >
+              <p class="text-gray-700">
+                The products will arrive in approximately
+                {{ shippingChoosed.estimatedTime / 24 }} dyas
+              </p>
+            </div>
           </div>
           <hr class="my-4" />
           <div class="flex justify-between">
@@ -130,24 +143,23 @@
             </div>
           </div>
           <div class="flex justify-between">
-            <p class="text-lg font-bold">Payment Type</p>
             <div>
-              <mat-form-field class="max-w-xs">
-                <mat-label>Choose payment type</mat-label>
-                <mat-select
-                  class="text-sm py-1 px-2 h-8"
-                  (selectionChange)="onPyment_typeSelected($event.value)"
+              <p class="font-medium inline-block mb-3 text-sm uppercase">
+                Payment Type
+              </p>
+              <div class="demo-full-width">
+                <select
+                  class="block p-2 text-gray-600 w-full text-sm"
+                  [(ngModel)]="payment_typeChoosed"
                 >
+                  <option value="" selected>Select payment type</option>
                   <ng-container *ngFor="let payment_type of payment_types">
-                    <mat-option
-                      class="mb-1 text-lg font-bold"
-                      [value]="payment_type"
-                      >{{ payment_type.payment_type }}</mat-option
-                    >
+                    <option [ngValue]="payment_type">
+                      {{ payment_type.payment_type }}
+                    </option>
                   </ng-container>
-                </mat-select>
-              </mat-form-field>
-              <p class="mb-1 text-lg font-bold"></p>
+                </select>
+              </div>
             </div>
           </div>
           <button
