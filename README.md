@@ -1,7 +1,7 @@
 # Trabajo-Practico-Desarrollo-de-SoftWare
 ## Integrantes 
 |Legajo|Apellido y Nombres|
-|:-|-:|
+|:-|:-|
 |49105|Bianchini, Tomás|
 
 ## 1. Introducción
@@ -18,6 +18,6 @@ La aplicación se encarga de la gestión de pasajes de avión, proporciona a los
 ### Alcance Adicional Voluntario
 
 |Req|Detalle|
-|:-|-:|
+|:-|:-|
 |Listado + detalle|1. Listado de carritos completados => detalle de la fecha de compra, todos los productos con la cantidad, <br> el tipo de envio elegido, y la posibilidad de cancelar la compra si esta dentro del tiempo permitido |
 |CUU/Epic|1. Cancelar un carrito <br> 3. Envio del carrito <br> 4. Moderación de reviews con la api de OpenAI|
