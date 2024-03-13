@@ -13,7 +13,7 @@ La aplicación se encarga de la gestión de pasajes de avión, proporciona a los
 |:-|:-|
 |CRUD simple|1.CRUD Shipping <br> 2.CRUD PaymentType <br> 3.CRUD User <br> 4.CRUD Category|
 |CRUD dependiente|1.CRUD Product <br> 2.CRUD Discount <br> 3.CRUD Order <br> 4.CRUD Cart|
-|Listado + detalle|1.Listado de productos filtrado por categoria => detalle de la descripcion, <br> precio, precio con descuento(en caso que la categoria tenga un descuento activo), imagen del producto |
+|Listado + detalle|1.Listado de productos filtrado por categoria => detalle de la descripcion, <br> precio, precio con descuento(en caso de que la categoria tenga un descuento activo), imagen del producto |
 |CUU/Epic|1. Completar un carrito con productos|
 ### Alcance Adicional Voluntario
 
