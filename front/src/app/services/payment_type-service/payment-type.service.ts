@@ -5,7 +5,7 @@ import { Payment_type } from 'src/app/Entities/Payment_type';
   providedIn: 'root',
 })
 export class PaymentTypeService {
-  url = 'http://localhost:3000';
+  url = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) {}
 

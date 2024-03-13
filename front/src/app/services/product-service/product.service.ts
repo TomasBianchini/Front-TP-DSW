@@ -7,7 +7,8 @@ import { ProductFilter } from 'src/app/Entities/ProductFilter.js';
   providedIn: 'root',
 })
 export class ProductService {
-  url = 'http://localhost:3000';
+  url = 'http://localhost:3000/api';
+
   constructor(private http: HttpClient) {}
   findAll(filter: ProductFilter = {}) {
     let params = new HttpParams();

@@ -5,7 +5,7 @@ import { Discount } from '../../Entities/Discount.js';
   providedIn: 'root',
 })
 export class DiscountService {
-  url = 'http://localhost:3000';
+  url = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) {}
 

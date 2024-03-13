@@ -5,7 +5,8 @@ import { Seller } from 'src/app/Entities/Seller';
   providedIn: 'root',
 })
 export class SellerService {
-  url = 'http://localhost:3000';
+  url = 'http://localhost:3000/api';
+
   constructor(private http: HttpClient) {}
 
   findAll() {

@@ -6,7 +6,7 @@ import { Shipping } from 'src/app/Entities/Shipping.js';
   providedIn: 'root',
 })
 export class ShippingService {
-  url = 'http://localhost:3000';
+  url = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) {}
 

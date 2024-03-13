@@ -6,7 +6,7 @@ import { Cart } from 'src/app/Entities/Cart.js';
   providedIn: 'root',
 })
 export class CartService {
-  url = 'http://localhost:3000';
+  url = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) {}
 

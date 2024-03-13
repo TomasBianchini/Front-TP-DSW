@@ -6,7 +6,7 @@ import { User } from 'src/app/Entities/User';
   providedIn: 'root',
 })
 export class UserService {
-  url = 'http://localhost:3000';
+  url = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) {}
 
