@@ -1,4 +1,4 @@
-# Trabajo-Practico-Desarrollo-de-SoftWare
+# Trabajo-Practico-Desarrollo-de-Software
 ## Integrantes 
 |Legajo|Apellido y Nombres|
 |:-|:-|
