@@ -1,4 +1,4 @@
-# Trabajo-Practico-Desarrollo-de-Software
+# Trabajo Practico de Desarrollo de Software
 ## Integrantes 
 |Legajo|Apellido y Nombres|
 |:-|:-|
