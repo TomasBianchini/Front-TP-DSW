@@ -6,7 +6,7 @@
 
 ## 1. Tema
 ### Descripción
-El proyecto consiste en el desarrollo de un sitio web de comercio electrónico que permite a los usuarios realizar la compra de productos ofrecidos por múltiples vendedores. El sitio estará diseñado para admitir diferentes niveles de usuarios, incluidos Clientes, Administradores y Vendedores, cada uno con funciones y privilegios específicos. Donde los administradores pueden crear descuentos para categorías de productos. Además, Los clientes pueden dejar reseñas y calificaciones para los productos que han comprado. Se utilizará la API de OpenAI, para moderar y analizar las reseñas, y si se detecta contenido inapropiado, la reseña ser dada de baja. 
+El proyecto consiste en el desarrollo de un sitio web de comercio electrónico que permite a los usuarios realizar la compra de productos ofrecidos por múltiples vendedores. El sitio estará diseñado para admitir diferentes niveles de usuarios, incluidos Clientes, Administradores y Vendedores, cada uno con funciones y privilegios específicos. Donde los administradores pueden crear descuentos para categorías de productos. Además, Los clientes pueden dejar reseñas y calificaciones para los productos que han comprado. Se utilizará la API de OpenAI, para moderar y analizar las reseñas, y si se detecta contenido inapropiado, la reseña será dada de baja. 
 ### Modelo
 ```mermaid
 ---
