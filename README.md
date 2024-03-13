@@ -71,6 +71,8 @@ classDiagram
       +integer quantity 
       +number subtotal
     }
+```
+
 
 ## 2. Alcance Funcional
 #### Aprobación Directa
