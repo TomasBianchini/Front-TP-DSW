@@ -41,7 +41,6 @@ export class LoginComponent {
       },
       error: (res: any) =>
         this.notificationService.showError(res.error.message),
-      //TODO change this to navigate to the correct page which is products
       complete: () => this.router.navigate(['/product']),
     });
   }

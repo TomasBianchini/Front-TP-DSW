@@ -26,7 +26,6 @@ import { EditShippingComponent } from './components/shipping-components/edit-shi
 import { CartListComponent } from './components/cart-components/cart-list/cart-list.component';
 import { CreateReviewComponent } from './components/review-components/create-review/create-review.component';
 const routes: Routes = [
-  //TODO add guard Admin, Seller, User to the routes
   {
     path: '',
     redirectTo: '/login',
