@@ -6,7 +6,6 @@ import { NotificationService } from 'src/app/services/notification-service/notif
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: [],
 })
 export class CategoryComponent implements OnInit {
   constructor(

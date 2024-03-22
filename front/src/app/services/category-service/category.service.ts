@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Category } from 'src/app/Entities/Category.js';
-
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class CategoryService {
-  url = 'http://localhost:3000/api';
+  url = environment.url;
 
   constructor(private http: HttpClient) {}
 

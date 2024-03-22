@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Payment_type } from 'src/app/Entities/Payment_type';
+import { environment } from 'src/environments/environment';
+
 @Injectable({
   providedIn: 'root',
 })
 export class PaymentTypeService {
-  url = 'http://localhost:3000/api';
+  url = environment.url;
 
   constructor(private http: HttpClient) {}
 

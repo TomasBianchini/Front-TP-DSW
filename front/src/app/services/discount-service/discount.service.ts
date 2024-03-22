@@ -1,11 +1,12 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Discount } from '../../Entities/Discount.js';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class DiscountService {
-  url = 'http://localhost:3000/api';
+  url = environment.url;
 
   constructor(private http: HttpClient) {}
 

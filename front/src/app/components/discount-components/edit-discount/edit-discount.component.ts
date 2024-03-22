@@ -8,7 +8,6 @@ import { Category } from 'src/app/Entities/Category';
 @Component({
   selector: 'app-edit-discount',
   templateUrl: './edit-discount.component.html',
-  styleUrls: ['./edit-discount.component.css'],
 })
 export class EditDiscountComponent {
   constructor(

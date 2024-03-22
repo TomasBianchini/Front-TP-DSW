@@ -40,18 +40,10 @@ export class NavBarComponent {
     this.router.navigate(['/login']);
   }
   isAdmin(): boolean {
-    if (this.user.type === 'Admin') {
-      return true;
-    } else {
-      return false;
-    }
+    return this.user.type === 'Admin';
   }
   isSeller(): boolean {
-    if (this.user.type === 'Seller') {
-      return true;
-    } else {
-      return false;
-    }
+    return this.user.type === 'Seller';
   }
 
   showPendingCart(): boolean {

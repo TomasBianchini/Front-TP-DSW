@@ -8,7 +8,6 @@ import { NotificationService } from 'src/app/services/notification-service/notif
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   public user!: User;
@@ -29,12 +28,6 @@ export class LoginComponent {
   onSubmit() {
     this.loginService.login(this.loginForm.value).subscribe({
       next: (res: any) => {
-        const fechaExpiracion = new Date();
-        fechaExpiracion.setTime(fechaExpiracion.getTime() + 7200 * 1000); // 2 hours
-        localStorage.setItem(
-          'tokenExpiration',
-          fechaExpiracion.getTime().toString()
-        );
         localStorage.setItem('token', res.token);
         localStorage.setItem('user', JSON.stringify(res.data));
         this.notificationService.showSuccess('Login successful');

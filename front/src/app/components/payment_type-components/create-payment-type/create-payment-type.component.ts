@@ -6,7 +6,6 @@ import { PaymentTypeService } from 'src/app/services/payment_type-service/paymen
 @Component({
   selector: 'app-create-payment-type',
   templateUrl: './create-payment-type.component.html',
-  styleUrls: ['./create-payment-type.component.css'],
 })
 export class CreatePaymentTypeComponent {
   constructor(

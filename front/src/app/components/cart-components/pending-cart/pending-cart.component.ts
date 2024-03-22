@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { Cart } from 'src/app/Entities/Cart';
 import { Payment_type } from 'src/app/Entities/Payment_type';
 import { Shipping } from 'src/app/Entities/Shipping.js';
@@ -12,7 +11,6 @@ import { ShippingService } from 'src/app/services/shipping-service/shipping.serv
 @Component({
   selector: 'app-pending-cart',
   templateUrl: './pending-cart.component.html',
-  styleUrls: ['./pending-cart.component.css'],
 })
 export class PendingCartComponent {
   constructor(

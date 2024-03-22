@@ -11,17 +11,7 @@ export class AppComponent {
   ngOnInit(): void {
     initFlowbite();
   }
-  // isLoginRoute!: boolean;
-  // isSignupRoute!: boolean;
 
-  // constructor(private router: Router) {
-  //   this.router.events.subscribe((event) => {
-  //     if (event instanceof NavigationEnd) {
-  //       this.isLoginRoute = event.url === '/login';
-  //       this.isSignupRoute = event.url === '/signup';
-  //     }
-  //   });
-  // }
   constructor(private router: Router) {}
 
   showNavBar(): boolean {

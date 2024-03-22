@@ -14,7 +14,6 @@ import { NotificationService } from 'src/app/services/notification-service/notif
 @Component({
   selector: 'app-create-discount',
   templateUrl: './create-discount.component.html',
-  styleUrls: ['./create-discount.component.css'],
 })
 export class CreateDiscountComponent {
   discountForm!: FormGroup;

@@ -6,7 +6,6 @@ import { ShippingService } from 'src/app/services/shipping-service/shipping.serv
 @Component({
   selector: 'app-shipping',
   templateUrl: './shipping.component.html',
-  styleUrls: ['./shipping.component.css'],
 })
 export class ShippingComponent {
   constructor(

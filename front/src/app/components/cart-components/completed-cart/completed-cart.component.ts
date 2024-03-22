@@ -6,7 +6,6 @@ import { NotificationService } from 'src/app/services/notification-service/notif
 @Component({
   selector: 'app-completed-cart',
   templateUrl: './completed-cart.component.html',
-  styleUrls: ['./completed-cart.component.css'],
 })
 export class CompletedCartComponent {
   constructor(

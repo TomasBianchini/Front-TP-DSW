@@ -8,7 +8,6 @@ import { UserService } from 'src/app/services/user-service/user.service';
 @Component({
   selector: 'app-sing-up',
   templateUrl: './sing-up.component.html',
-  styleUrls: ['./sing-up.component.css'],
 })
 export class SingUpComponent implements OnInit {
   userForm!: FormGroup;

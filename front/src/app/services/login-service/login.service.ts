@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { jwtDecode } from 'jwt-decode';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
-  url = 'http://localhost:3000/api';
+  url = environment.url;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -15,15 +16,13 @@ export class LoginService {
 
   loggedIn(): boolean {
     const token = localStorage.getItem('token');
-    const tokenExpiracion = localStorage.getItem('tokenExpiration');
-    if (!token || !tokenExpiracion) {
+    if (!token) {
       return false;
     }
-    const fechaActual = new Date().getTime();
-    if (fechaActual > parseInt(tokenExpiracion)) {
-      localStorage.removeItem('user');
+    const decoded = jwtDecode(token);
+
+    if (!decoded.exp || decoded.exp < Date.now() / 1000) {
       localStorage.removeItem('token');
-      localStorage.removeItem('tokenExpiration');
       return false;
     }
     return true;

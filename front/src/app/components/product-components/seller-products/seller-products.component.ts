@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { Product } from 'src/app/Entities/Product.js';
 import { ProductFilter } from 'src/app/Entities/ProductFilter.js';
 import { NotificationService } from 'src/app/services/notification-service/notification.service';
@@ -8,12 +7,11 @@ import { ProductService } from 'src/app/services/product-service/product.service
 @Component({
   selector: 'app-seller-products',
   templateUrl: './seller-products.component.html',
-  styleUrls: ['./seller-products.component.css'],
+  styleUrls: [],
 })
 export class SellerProductsComponent {
   constructor(
     private notificationService: NotificationService,
-    private router: Router,
     private productService: ProductService
   ) {}
   products!: Product[];
