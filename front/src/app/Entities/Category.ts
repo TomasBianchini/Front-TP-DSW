@@ -8,5 +8,5 @@ export interface Category {
   state: 'Active' | 'Archived';
   createdAt: Date;
   updatedAt: Date;
-  expanded?: boolean;
+  expanded: boolean;
 }
