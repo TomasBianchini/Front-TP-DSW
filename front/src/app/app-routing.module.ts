@@ -12,9 +12,9 @@ import { EditPaymentTypeComponent } from './components/payment_type-components/e
 import { LoginComponent } from './components/login/login.component';
 import { SingUpComponent } from './components/sing-up/sing-up.component';
 
-import { AuthGuard } from './guards/auth-guard/auth.guard';
-import { AdminGuard } from './guards/auth-guard/admin-guard';
-import { SellerGuard } from './guards/auth-guard/seller-guard';
+import { authGuard } from './guards/auth-guard/auth.guard';
+import { adminGuard } from './guards/auth-guard/admin.guard';
+import { sellerGuard } from './guards/auth-guard/seller.guard';
 import { ListProductComponent } from './components/product-components/list-product/list-product.component';
 import { CreateProductComponent } from './components/product-components/create-product/create-product.component';
 import { EditProductComponent } from './components/product-components/edit-product/edit-product.component';
@@ -33,7 +33,7 @@ const routes: Routes = [
   },
   {
     path: 'category',
-    canActivate: [AuthGuard, AdminGuard],
+    canActivate: [authGuard, adminGuard],
     children: [
       { path: '', component: CategoryComponent },
       { path: 'create', component: CreateCategoryComponent },
@@ -42,7 +42,7 @@ const routes: Routes = [
   },
   {
     path: 'discount',
-    canActivate: [AuthGuard, AdminGuard],
+    canActivate: [authGuard, adminGuard],
     children: [
       { path: '', component: DiscountComponent },
       { path: 'create', component: CreateDiscountComponent },
@@ -51,7 +51,7 @@ const routes: Routes = [
   },
   {
     path: 'payment_type',
-    canActivate: [AuthGuard, AdminGuard],
+    canActivate: [authGuard, adminGuard],
     children: [
       { path: '', component: PaymentTypeComponent },
       { path: 'create', component: CreatePaymentTypeComponent },
@@ -60,7 +60,7 @@ const routes: Routes = [
   },
   {
     path: 'shipping',
-    canActivate: [AuthGuard, AdminGuard],
+    canActivate: [authGuard, adminGuard],
     children: [
       { path: '', component: ShippingComponent },
       { path: 'create', component: CreateShippingComponent },
@@ -70,34 +70,34 @@ const routes: Routes = [
   {
     path: 'review',
     component: CreateReviewComponent,
-    canActivate: [AuthGuard],
+    canActivate: [authGuard],
   },
   {
     path: 'product',
-    canActivate: [AuthGuard],
+    canActivate: [authGuard],
     children: [
       { path: '', component: ListProductComponent },
       {
         path: 'create',
         component: CreateProductComponent,
-        canActivate: [SellerGuard],
+        canActivate: [sellerGuard],
       },
       {
         path: 'edit/:id',
         component: EditProductComponent,
-        canActivate: [SellerGuard],
+        canActivate: [sellerGuard],
       },
       {
         path: 'sellerProducts',
         component: SellerProductsComponent,
-        canActivate: [SellerGuard],
+        canActivate: [sellerGuard],
       },
       { path: 'productDetails/:id', component: ProductDetailsComponent },
     ],
   },
   {
     path: 'cart',
-    canActivate: [AuthGuard],
+    canActivate: [authGuard],
     children: [
       {
         path: 'complete-cart',

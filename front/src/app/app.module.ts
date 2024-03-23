@@ -41,7 +41,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 
 //guards
-import { AuthGuard } from './guards/auth-guard/auth.guard';
+import { authGuard } from './guards/auth-guard/auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor-service/token-interceptor.service';
 import { CreateReviewComponent } from './components/review-components/create-review/create-review.component';
 import { ShippingComponent } from './components/shipping-components/shipping/shipping.component';
@@ -101,7 +101,6 @@ import { PendingCartComponent } from './components/cart-components/pending-cart/
     MatToolbarModule,
   ],
   providers: [
-    AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
