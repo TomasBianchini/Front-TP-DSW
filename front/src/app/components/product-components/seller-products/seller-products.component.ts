@@ -18,6 +18,7 @@ export class SellerProductsComponent {
   productFilter: ProductFilter = {};
   ngOnInit() {
     this.productFilter.seller = JSON.parse(localStorage.getItem('user')!).id;
+    this.productFilter.state = 'Active';
     this.productService.findAll(this.productFilter).subscribe({
       error: (res: any) =>
         this.notificationService.showError(res.error.message),
