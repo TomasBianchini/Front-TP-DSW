@@ -3,9 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Order } from 'src/app/Entities/Order.js';
 import { Product } from 'src/app/Entities/Product';
 import { User } from 'src/app/Entities/User.js';
-import { NotificationService } from 'src/app/services/notification-service/notification.service';
-import { OrderService } from 'src/app/services/order-service/order.service';
-import { ProductService } from 'src/app/services/product-service/product.service';
+import { NotificationService } from '../../../services/notification-service/notification.service';
+import { OrderService } from '../../../services/order-service/order.service';
+import { ProductService } from '../../..//services/product-service/product.service';
 
 @Component({
   selector: 'app-product-details',

@@ -31,7 +31,7 @@ export class CartService {
   }
 
   update(id: string, cart: Cart) {
-    return this.http.put(`${this.url}/cart/${id}`, cart);
+    return this.http.put(`${this.url}/cart/complete/${id}`, cart);
   }
 
   remove(id: string) {

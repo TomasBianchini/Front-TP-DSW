@@ -1,13 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { Product } from 'src/app/Entities/Product.js';
 import { ProductFilter } from 'src/app/Entities/ProductFilter.js';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../environments/environment';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class ProductService {
+export class ProductServiceMock {
   url = environment.url;
 
   constructor(private http: HttpClient) {}
