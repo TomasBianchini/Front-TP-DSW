@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Order } from 'src/app/Entities/Order.js';
 import { Product } from 'src/app/Entities/Product';
 import { User } from 'src/app/Entities/User.js';
