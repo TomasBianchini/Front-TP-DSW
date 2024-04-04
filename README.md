@@ -100,7 +100,7 @@ classDiagram
      
      npm install
      
-  f. Inicia el servidor: 
+  c. Inicia el servidor: 
 
     ng serve
     
