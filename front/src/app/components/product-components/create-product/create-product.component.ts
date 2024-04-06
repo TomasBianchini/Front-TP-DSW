@@ -18,7 +18,7 @@ export class CreateProductComponent {
     private formBuilder: FormBuilder,
     private categoryService: CategoryService
   ) {}
-
+    
   productForm!: FormGroup;
   categories!: Category[];
   ngOnInit() {
@@ -26,7 +26,7 @@ export class CreateProductComponent {
       name: ['', [Validators.required, Validators.maxLength(150)]],
       price: ['', [Validators.required, Validators.min(0)]],
       stock: ['', [Validators.required, Validators.min(0)]],
-      description: ['', [Validators.required, Validators.maxLength(150)]],
+      description: ['', [Validators.required, Validators.maxLength(2000)]],
       img_url: ['', [Validators.required, Validators.maxLength(150)]],
       state: [
         '',
