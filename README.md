@@ -75,7 +75,7 @@ classDiagram
 
 
 ## 2. Alcance Funcional
-#### Aprobación Directa
+### Aprobación Directa
 |Req|Detalle|
 |:-|:-|
 |CRUD simple|1.CRUD Shipping <br> 2.CRUD PaymentType <br> 3.CRUD User <br> 4.CRUD Category|
@@ -88,3 +88,20 @@ classDiagram
 |:-|:-|
 |Listado + detalle|1. Listado de carritos completados => detalle de la fecha de compra, todos los productos con la cantidad, <br> el tipo de envio elegido, y la posibilidad de cancelar la compra si esta dentro del tiempo permitido |
 |CUU/Epic|1. Cancelar un carrito <br> 3. Envio del carrito <br> 4. Moderación de reviews con la api de OpenAI|
+
+## 3. Instrucciones de instalación
+  a. Clona este repositorio en tu máquina local:
+  
+  ```bash
+    https://github.com/TomasBianchini/Front-TP-DSW.git
+  ```
+
+  b. Installar las dependencias usando npm:
+     
+     npm install
+     
+  c. Inicia el servidor: 
+
+    ng serve
+    
+La aplicación estará disponible en http://localhost:4200 
