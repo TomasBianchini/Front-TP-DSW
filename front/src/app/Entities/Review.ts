@@ -3,7 +3,7 @@ export interface Review {
   rating: number;
   comment: string;
   state: 'Active' | 'Archived';
-  product: Product;
+  product: Product | string;
   createdAt: Date;
   updatedAt: Date;
 }

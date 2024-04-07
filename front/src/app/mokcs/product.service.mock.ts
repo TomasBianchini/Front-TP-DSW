@@ -1,36 +1,66 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { Product } from 'src/app/Entities/Product.js';
-import { ProductFilter } from 'src/app/Entities/ProductFilter.js';
-import { environment } from '../../environments/environment';
+import { of } from 'rxjs';
 
 export class ProductServiceMock {
-  url = environment.url;
+  private product: Product = {
+    _id: '1',
+    id: '1',
+    name: 'Producto de prueba 1',
+    price: 100,
+    priceWithDiscount: 90,
+    stock: 50,
+    description: 'Descripción del producto 1',
+    img_url: 'url_de_la_imagen_1',
+    state: 'Active',
+    category: {
+      _id: '1',
+      id: '1',
+      discounts: [
+        {
+          value: 10,
+          id: '1',
+          state: 'Active',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],
+      category: '',
+      state: 'Active',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      expanded: false,
+    },
+    seller: {
+      shop_name: '',
+      cuil: '',
+      cbu: '',
+      products: [],
+      id: '',
+      user_name: '',
+      email: '',
+      password: '',
+      address: '',
+      type: 'Admin',
+      state: 'Active',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    rating: 4.5,
+    reviews: [
+      {
+        rating: 4,
+        comment: 'Good product',
+        state: 'Active',
+        product: '1',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ],
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
 
-  constructor(private http: HttpClient) {}
-  findAll(filter: ProductFilter = {}) {
-    let params = new HttpParams();
-    if (filter.state) {
-      params = params.set('state', filter.state);
-    }
-    if (filter.category) {
-      params = params.set('category', filter.category);
-    }
-    if (filter.seller) {
-      params = params.set('seller', filter.seller);
-    }
-    return this.http.get(`${this.url}/product`, { params });
-  }
-
-  findOne(id: string) {
-    return this.http.get(`${this.url}/product/${id}`);
-  }
-  add(product: Product) {
-    return this.http.post(`${this.url}/product`, product);
-  }
-  update(id: string, product: Product) {
-    return this.http.put(`${this.url}/product/${id}`, product);
-  }
-  remove(id: string) {
-    return this.http.delete(`${this.url}/product/${id}`);
+  findOne(productId: string) {
+    return of({ message: 'Found product', data: this.product });
   }
 }

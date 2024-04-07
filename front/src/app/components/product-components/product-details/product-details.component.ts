@@ -31,7 +31,7 @@ export class ProductDetailsComponent {
         this.notificationService.showError(res.error.message),
       next: (res: any) => {
         this.product = res.data;
-        if (this.product.reviews.length > 0) {
+        if (this.product.reviews && this.product.reviews.length > 0) {
           this.product.rating = parseFloat(
             (
               this.product.reviews.reduce(
@@ -65,7 +65,7 @@ export class ProductDetailsComponent {
     if (this.quantity > 1) this.quantity--;
   }
   addToCart() {
-    if (this.quantity < this.product.stock) {
+    if (this.quantity <= this.product.stock) {
       this.order = {
         product: this.product._id,
         quantity: this.quantity,
