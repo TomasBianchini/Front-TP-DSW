@@ -19,28 +19,30 @@ export class CompletedCartComponent {
     const userDataString = localStorage.getItem('user');
     if (userDataString) {
       const user = JSON.parse(userDataString);
-      this.cartService.findAll({ id: user.id, state: 'Completed' }).subscribe({
-        next: (res: any) => {
-          this.carts = res.data;
-          this.carts.sort((a, b) => {
-            return a.updatedAt > b.updatedAt
-              ? -1
-              : a.updatedAt < b.updatedAt
-              ? 1
-              : 0;
-          });
-          const currentDate = new Date();
-          this.carts.forEach((cart) => {
-            const cartUpdatedAt = new Date(cart.updatedAt);
-            const timeDifference =
-              currentDate.valueOf() - cartUpdatedAt.valueOf();
-            const hoursDifference = timeDifference / (1000 * 3600);
-            if (hoursDifference <= cart.shipping.cancellationDeadline) {
-              cart.canCancel = true;
-            }
-          });
-        },
-      });
+      this.cartService
+        .findAll({ user: user.id, state: 'Completed' })
+        .subscribe({
+          next: (res: any) => {
+            this.carts = res.data;
+            this.carts.sort((a, b) => {
+              return a.updatedAt > b.updatedAt
+                ? -1
+                : a.updatedAt < b.updatedAt
+                ? 1
+                : 0;
+            });
+            const currentDate = new Date();
+            this.carts.forEach((cart) => {
+              const cartUpdatedAt = new Date(cart.updatedAt);
+              const timeDifference =
+                currentDate.valueOf() - cartUpdatedAt.valueOf();
+              const hoursDifference = timeDifference / (1000 * 3600);
+              if (hoursDifference <= cart.shipping.cancellationDeadline) {
+                cart.canCancel = true;
+              }
+            });
+          },
+        });
     }
   }
 
