@@ -52,7 +52,6 @@ export class CompletedCartComponent {
   addReview(product: string) {
     this.addProductReview = product;
     this.review = !this.review;
-    console.log(this.review);
   }
   cancelCart(cart: Cart) {
     console.log(cart.id);

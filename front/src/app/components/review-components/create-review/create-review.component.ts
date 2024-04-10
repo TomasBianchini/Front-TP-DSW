@@ -36,7 +36,7 @@ export class CreateReviewComponent implements OnInit {
   }
 
   onSubmit() {
-    this.reviewForm.patchValue({ product: '65e2235557d31e6a15c66e3c' });
+    this.reviewForm.patchValue({ product: this.product });
     if (this.reviewForm.valid) {
       this.reviewService.add(this.reviewForm.value).subscribe({
         next: (res: any) => {
