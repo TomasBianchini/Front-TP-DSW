@@ -15,7 +15,7 @@ export const sellerGuard: CanActivateFn = (
   if (userDataString) {
     const user = JSON.parse(userDataString);
 
-    if (user.type === 'Seller') {
+    if (user && user.type === 'Seller') {
       return true;
     } else {
       router.navigate(['/login']);
