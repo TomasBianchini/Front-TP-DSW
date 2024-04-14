@@ -105,3 +105,8 @@ classDiagram
     ng serve
     
 La aplicación estará disponible en http://localhost:4200 
+## 4. Playlist de vistas del user, seller y admin
+
+Puedes ver las vistas del usuario, seller y admin en nuestra playlist de YouTube:
+
+[https://www.youtube.com/playlist?list=PL5QpGS3Cj_W3ge1vJ6teEJ61rrNyAvobD](https://www.youtube.com/playlist?list=PL5QpGS3Cj_W3ge1vJ6teEJ61rrNyAvobD)
