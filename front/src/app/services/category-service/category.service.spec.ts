@@ -6,6 +6,7 @@ import {
 import { CategoryService } from './category.service';
 import { Category } from 'src/app/Entities/Category.js';
 import { environment } from '../../../environments/environment';
+
 describe('CategoryService', () => {
   let service: CategoryService;
   let controller: HttpTestingController;
@@ -27,13 +28,15 @@ describe('CategoryService', () => {
       data: [
         {
           id: '1',
-          name: 'category1',
+          category: 'category1',
         },
       ],
     };
-    let category: Category;
+    let category!: Category;
     service.findOne('1').subscribe((res: any) => {
-      category = res.data;
+      category = res.data[0];
+      expect(category.category).toEqual('category1');
+      expect(category.id).toEqual('1');
     });
     const request = controller.expectOne(environment.url + '/category/1');
     request.flush(result);
@@ -45,11 +48,11 @@ describe('CategoryService', () => {
       data: [
         {
           id: '1',
-          name: 'category1',
+          category: 'category1',
         },
         {
           id: '2',
-          name: 'category2',
+          category: 'category2',
         },
       ],
     };
@@ -73,7 +76,6 @@ describe('CategoryService', () => {
     };
 
     const category: any = {
-      id: '1',
       category: 'category1',
     };
     let newCategory: Category;
@@ -101,6 +103,7 @@ describe('CategoryService', () => {
     let updatedCategory: Category;
     service.update('1', category).subscribe((res: any) => {
       updatedCategory = res.data;
+      expect(updatedCategory).toEqual(category);
     });
     const request = controller.expectOne(environment.url + '/category/1');
     request.flush(result);
