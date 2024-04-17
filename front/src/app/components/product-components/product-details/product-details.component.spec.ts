@@ -18,7 +18,7 @@ describe('ProductDetailsComponent', () => {
   let fixture: ComponentFixture<ProductDetailsComponent>;
   let orderServiceMock: OrderServiceMock;
   let notificationServiceMock: NotificationServiceMock;
-  const user = { id: '1', name: 'John Doe' };
+  const user = { id: '1', user_name: 'John Doe' };
   localStorage.setItem('user', JSON.stringify(user));
 
   beforeEach(waitForAsync(() => {
